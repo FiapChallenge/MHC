@@ -4,13 +4,18 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
-from cx_Oracle import makedsn
+from cx_Oracle import makedsn, init_oracle_client
 from sqlalchemy import inspect
-from flasgger import Swagger, swag_from
+from flasgger import Swagger
 from sqlalchemy.orm import validates
+import pathlib
 import yaml
 
 SELF_SIGN_CERT = False
+
+
+INSTANTCLIENTDIR = rf"{pathlib.Path().resolve()}\instantclient"
+init_oracle_client(lib_dir=INSTANTCLIENTDIR)
 
 app = Flask(__name__)
 app.config["SWAGGER"] = {
