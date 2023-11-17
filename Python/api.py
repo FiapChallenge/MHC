@@ -20,6 +20,10 @@ app.config["SWAGGER"] = {
 # template external yaml file to json
 with open("docs/swagger.yaml", "r", encoding="utf-8") as f:
     template = yaml.safe_load(f)
+    if SELF_SIGN_CERT:
+        template["schemes"] = ["https"]
+    else:
+        template["schemes"] = ["http"]
 
 swagger = Swagger(app, template=template)
 
