@@ -8,88 +8,18 @@ from cx_Oracle import makedsn
 from sqlalchemy import inspect
 from flasgger import Swagger, swag_from
 from sqlalchemy.orm import validates
+import yaml
 
 SELF_SIGN_CERT = False
 
 app = Flask(__name__)
 app.config["SWAGGER"] = {
-    "title": "API Classificação de Risco",
-    "uiversion": 3,
     "specs_route": "/api/docs/",
-    "description": "API para classificação de risco de pacientes",
 }
 
-template = {
-    "swagger": "2.0",
-    "info": {
-        "title": "API Classificação de Risco",
-        "description": "API para classificação de risco de pacientes",
-        "contact": {
-            "responsibleOrganization": "Manchester Healthcare",
-            "responsibleDeveloper": "Augusto Barcelos Barros",
-            "email": "augustobb@live.com",
-        },
-        "version": "0.0.1",
-    },
-    "schemes": ["http", "https"],
-    "operationId": "getmyData",
-    "definitions": {
-        "Auditor": {
-            "type": "object",
-            "properties": {
-                "id_auditor": {"type": "integer"},
-                "nome": {"type": "string"},
-                "cpf": {"type": "string"},
-                "crm": {"type": "string"},
-                "coren": {"type": "string"},
-                "especialidade": {"type": "string"},
-            },
-        },
-        "Classificacao": {
-            "type": "object",
-            "properties": {
-                "id_classificacao": {"type": "integer"},
-                "data_hora_classificacao": {"type": "string"},
-                "gravidade_id_gravidade": {"type": "integer"},
-                "sinal_id_sinal": {"type": "integer"},
-                "paciente_id_paciente": {"type": "integer"},
-                "auditor_id_auditor": {"type": "integer"},
-            },
-        },
-        "Gravidade": {
-            "type": "object",
-            "properties": {
-                "id_gravidade": {"type": "integer"},
-                "nome_gravidade": {"type": "string"},
-                "nome_cor": {"type": "string"},
-                "hexadecimal_cor": {"type": "string"},
-            },
-        },
-        "Paciente": {
-            "type": "object",
-            "properties": {
-                "id_paciente": {"type": "integer"},
-                "nome": {"type": "string"},
-                "cpf": {"type": "string"},
-                "rg": {"type": "string"},
-                "data_hora_entrada": {"type": "string"},
-                "data_hora_saida": {"type": "string"},
-                "sexo": {"type": "string"},
-                "idade": {"type": "integer"},
-                "altura": {"type": "integer"},
-                "peso": {"type": "integer"},
-            },
-        },
-        "Sinal": {
-            "type": "object",
-            "properties": {
-                "id_sinal": {"type": "integer"},
-                "nome": {"type": "string"},
-                "descricao": {"type": "string"},
-            },
-        },
-    },
-}
+# template external yaml file to json
+with open("docs/swagger.yaml", "r", encoding="utf-8") as f:
+    template = yaml.safe_load(f)
 
 swagger = Swagger(app, template=template)
 
@@ -122,7 +52,6 @@ def verify_json_keys(json, model):
     inspector = inspect(model)
     if inspector:
         columns = [column.key for column in inspector.columns]
-        print(columns)
         if not all(key in columns for key in json.keys()):
             return False
     return True
@@ -360,87 +289,10 @@ class Sinal(db.Model):
 
 
 class AuditorResource(Resource):
-    @swag_from(
-        {
-            "tags": ["Auditor"],
-            "description": "Get a list of all auditors.",
-            "responses": {
-                "200": {
-                    "description": "A list of auditors.",
-                    "schema": {
-                        "type": "array",
-                        "items": {"$ref": "#/definitions/Auditor"},
-                    },
-                    "examples": {
-                        "application/json": [
-                            {
-                                "id_auditor": 1,
-                                "nome": "John Doe",
-                                "cpf": "12345678901",
-                                "crm": "ABC123",
-                                "coren": "XYZ456",
-                                "especialidade": "Cardiology",
-                            },
-                            {
-                                "id_auditor": 2,
-                                "nome": "Jane Doe",
-                                "cpf": "10987654321",
-                                "crm": "DEF456",
-                                "coren": "ZYX654",
-                                "especialidade": "Pediatrics",
-                            },
-                        ]
-                    },
-                }
-            },
-        }
-    )
     def get(self):
         auditores = Auditor.query.all()
         return [auditor.json() for auditor in auditores]
 
-    @swag_from(
-        {
-            "tags": ["Auditor"],
-            "description": "Create a new auditor.",
-            "parameters": [
-                {
-                    "name": "body",
-                    "in": "body",
-                    "required": True,
-                    "schema": {"$ref": "#/definitions/Auditor"},
-                    "examples": {
-                        "application/json": {
-                            "id_auditor": 1,
-                            "nome": "John Doe",
-                            "cpf": "12345678901",
-                            "crm": "ABC123",
-                            "coren": "XYZ456",
-                            "especialidade": "Cardiology",
-                        }
-                    },
-                }
-            ],
-            "responses": {
-                "201": {
-                    "description": "Auditor created successfully.",
-                    "schema": {"$ref": "#/definitions/Auditor"},
-                    "examples": {
-                        "application/json": {
-                            "id_auditor": 1,
-                            "nome": "John Doe",
-                            "cpf": "12345678901",
-                            "crm": "ABC123",
-                            "coren": "XYZ456",
-                            "especialidade": "Cardiology",
-                        }
-                    },
-                },
-                "400": {"description": "Invalid JSON keys."},
-                "500": {"description": "Erro ao salvar auditor."},
-            },
-        }
-    )
     def post(self):
         data = request.get_json()
         if not verify_json_keys(data, Auditor):
@@ -455,38 +307,6 @@ class AuditorResource(Resource):
 
 
 class AuditorIdResource(Resource):
-    @swag_from(
-        {
-            "tags": ["Auditor"],
-            "description": "Get a single auditor by ID.",
-            "parameters": [
-                {
-                    "name": "id_modelo",
-                    "in": "path",
-                    "type": "integer",
-                    "required": True,
-                    "description": "The ID of the auditor to retrieve.",
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "Auditor found.",
-                    "schema": {"$ref": "#/definitions/Auditor"},
-                    "examples": {
-                        "application/json": {
-                            "id_auditor": 1,
-                            "nome": "John Doe",
-                            "cpf": "12345678901",
-                            "crm": "ABC123",
-                            "coren": "XYZ456",
-                            "especialidade": "Cardiology",
-                        }
-                    },
-                },
-                "404": {"description": "Auditor not found."},
-            },
-        }
-    )
     def get(self, id_modelo):
         if not id_modelo.isdigit():
             return {"message": "Invalid ID"}, 400
@@ -496,56 +316,6 @@ class AuditorIdResource(Resource):
             return auditor.json()
         return {"message": "Auditor não encontrado."}, 404
 
-    @swag_from(
-        {
-            "tags": ["Auditor"],
-            "description": "Update a single auditor by ID.",
-            "parameters": [
-                {
-                    "name": "id_modelo",
-                    "in": "path",
-                    "type": "integer",
-                    "required": True,
-                    "description": "The ID of the auditor to update.",
-                },
-                {
-                    "name": "body",
-                    "in": "body",
-                    "required": True,
-                    "schema": {"$ref": "#/definitions/Auditor"},
-                    "examples": {
-                        "application/json": {
-                            "id_auditor": 1,
-                            "nome": "John Doe",
-                            "cpf": "12345678901",
-                            "crm": "ABC123",
-                            "coren": "XYZ456",
-                            "especialidade": "Cardiology",
-                        }
-                    },
-                },
-            ],
-            "responses": {
-                "200": {
-                    "description": "Auditor updated successfully.",
-                    "schema": {"$ref": "#/definitions/Auditor"},
-                    "examples": {
-                        "application/json": {
-                            "id_auditor": 1,
-                            "nome": "John Doe",
-                            "cpf": "12345678901",
-                            "crm": "ABC123",
-                            "coren": "XYZ456",
-                            "especialidade": "Cardiology",
-                        }
-                    },
-                },
-                "400": {"description": "Invalid JSON keys."},
-                "404": {"description": "Auditor not found."},
-                "500": {"description": "Erro ao salvar auditor."},
-            },
-        }
-    )
     def put(self, id_modelo):
         data = request.get_json()
         auditor = db.session.get(Auditor, id_modelo)
@@ -563,26 +333,6 @@ class AuditorIdResource(Resource):
             return {"message": f"Erro ao salvar auditor: {e}"}, 500
         return auditor.json(), 200
 
-    @swag_from(
-        {
-            "tags": ["Auditor"],
-            "description": "Delete a single auditor by ID.",
-            "parameters": [
-                {
-                    "name": "id_modelo",
-                    "in": "path",
-                    "type": "integer",
-                    "required": True,
-                    "description": "The ID of the auditor to delete.",
-                }
-            ],
-            "responses": {
-                "200": {"description": "Auditor deleted successfully."},
-                "404": {"description": "Auditor not found."},
-                "500": {"description": "Erro ao deletar auditor."},
-            },
-        }
-    )
     def delete(self, id_modelo):
         auditor = db.session.get(Auditor, id_modelo)
         if not auditor:
@@ -602,6 +352,9 @@ class ClassificacaoResource(Resource):
 
     def post(self):
         data = request.get_json()
+        data["data_hora_classificacao"] = datetime.strptime(
+            data["data_hora_classificacao"], "%Y-%m-%d %H:%M:%S"
+        )
         if not verify_json_keys(data, Classificacao):
             return {"message": "Invalid JSON keys"}, 400
         classificacao = Classificacao(**data)
@@ -628,7 +381,9 @@ class ClassificacaoIdResource(Resource):
         classificacao = db.session.get(Classificacao, id_modelo)
         if not classificacao:
             return {"message": "Classificacao não encontrada."}, 404
-        classificacao.data_hora_classificacao = data["data_hora_classificacao"]
+        classificacao.data_hora_classificacao = datetime.strptime(
+            data["data_hora_classificacao"], "%Y-%m-%d %H:%M:%S"
+        )
         classificacao.gravidade_id_gravidade = data["gravidade_id_gravidade"]
         classificacao.sinal_id_sinal = data["sinal_id_sinal"]
         classificacao.paciente_id_paciente = data["paciente_id_paciente"]
