@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E4D24740-6973-B6CD-10E5-6BEA272324F0" name="Gravidade">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>9D108C21-BBB0-86E7-1E23-04F03F022D62</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<ordsAlias>cor</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_gravidade" id="910C8F04-9209-EA46-2A66-D136772A06C9">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>A844091F-4B57-2165-2460-0EB39FAF829C</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome_gravidade" id="23F23205-21F7-E525-60A0-81DEE37941CE">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-17 05:27:29 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome_cor" id="CEEA2DC7-188D-A9B9-2646-55A7F0C260D0">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>66358259-CB86-8E79-80AF-93823128B8FF</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hexadecimal_cor" id="BDE7C9CB-BEF8-C1A2-819C-CA54EB03BD02">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>FD988D72-500C-598D-5162-32E303C54D79</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6 CHAR</dataTypeSize>
+<ownDataTypeParameters>6 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="807DC289-47D6-284C-4BC4-F6D7E37532F4" name="Cores_PK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>6F889D0C-70ED-CAC6-5D10-29ADCADD8193</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="910C8F04-9209-EA46-2A66-D136772A06C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
