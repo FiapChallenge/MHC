@@ -1,0 +1,9 @@
+- Documento com a especificação da solução proposta:
+    - O arquivo deve ter uma capa com o nome da solução, nome e RM dos integrantes, turma de cada integrante
+e um link para o vídeo disponibilizado (não esqueça de deixar o vídeo acessível) (10 pontos).
+
+👤| Integrantes - RM :
+Augusto Barcelos Barros - 98078
+Gabriel Gribl de Carvalho - 96270
+Gabriel Souza de Queiroz - 98570
+Gabriela Zanotto Alves Rodrigues - 551629

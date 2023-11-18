@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8782DD4B-C718-DF48-D8C4-70A1D1401484" name="Sinal">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>9646C191-09F4-BEDE-330B-9DC9F5004008</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_sinal" id="72489178-5C3C-C5CF-8E5B-F4EC98227ADE">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>5246A30E-C9F3-F1B7-0C9F-69D561811752</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome" id="F4ADBE5A-9B00-65C8-7587-7952856E8F83">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>DF17ECB3-6C06-7E42-CE73-9CC8BE7ECFDF</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 CHAR</dataTypeSize>
+<ownDataTypeParameters>60 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descricao" id="F902F16A-B112-F1B6-7422-C6F745849E31">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>7D14FA5F-BAF8-9837-1D03-4E371BF62D50</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>700 CHAR</dataTypeSize>
+<ownDataTypeParameters>700 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F7852D8A-1E20-FBDD-3DF6-FDCF256A43CF" name="Sinal_apresentado_PK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>E87D3316-57C9-41EB-CCB1-5EB7AD992D3B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="72489178-5C3C-C5CF-8E5B-F4EC98227ADE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

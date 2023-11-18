@@ -1,0 +1,166 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="668EDBC2-C6DF-83A8-BB8C-00A54CD6826C" name="Paciente">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 00:39:02 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_paciente" id="8498FC00-BEB6-FD4B-D728-52AE801D10EF">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-11-18 00:24:56 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nome" id="BBFF7019-EEE9-0219-D4F2-78A43AB815A7">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:25:28 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cpf" id="A20ECC50-40D1-523D-5AC5-53BED7F18299">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:26:02 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rg" id="4D94EA75-BDDE-1624-CC5E-07A7F2E7623B">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:26:43 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9 CHAR</dataTypeSize>
+<ownDataTypeParameters>9 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_hora_entrada" id="3F1AB648-CDD4-177D-3D24-48FCBF317603">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:27:01 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_hora_saida" id="30E4B4E6-716E-DA3F-6BB7-48ADE397ABCE">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:29:17 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sexo" id="AB9DE95D-9B75-C165-8059-AE4C7605A155">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:31:28 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="idade" id="FEDAFC92-4636-E5F4-BFBF-7F2258626153">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:32:01 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="altura" id="0FA4CCB4-F1D9-257A-6D0D-72743CA9FF35">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:33:09 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="peso" id="125F07C1-E54F-0C3B-8D4D-C73526E1FC26">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:33:37 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A5A823F8-E214-BADD-5916-AC4DFEB9E0AA" name="Paciente PK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:26:22 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8498FC00-BEB6-FD4B-D728-52AE801D10EF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
