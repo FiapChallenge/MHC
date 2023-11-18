@@ -61,22 +61,6 @@
 <colAssociation fkAssociation="32BE7B33-34C7-05D3-0E19-3BB5B4129702" referredColumn="72489178-5C3C-C5CF-8E5B-F4EC98227ADE"/>
 </associations>
 </Column>
-<Column name="Paciente_cpf" id="95E41DD0-431E-7F54-CC24-2C7FFD5DA875">
-<createdBy>Gabriel</createdBy>
-<createdTime>2023-11-17 01:57:41 UTC</createdTime>
-<generatorID>0926915C-D3E0-E15A-1CB2-1948759F702D</generatorID>
-<ownerDesignName>modelo_logico_gs</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>11 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="EF628C71-0321-196E-17D7-8A71A566FDB6" referredColumn="F3AFB4A5-7C20-CCA1-AB71-E2B37203B880"/>
-</associations>
-</Column>
 <Column name="Auditor_id_auditor" id="F203ACCA-7199-C333-5BCC-607544340A24">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:57:41 UTC</createdTime>
@@ -90,6 +74,20 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="4B1CBE09-062A-23F6-9318-DF8583D59F55" referredColumn="FD41F8C7-8108-AAD1-9504-73CB9903CFB2"/>
+</associations>
+</Column>
+<Column name="Paciente_id_paciente" id="52047221-EA83-ED5A-2788-388D073440BE">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-11-18 00:26:07 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF628C71-0321-196E-17D7-8A71A566FDB6" referredColumn="5B1A4884-F953-ACA8-D5B7-241F2EC4EDEA"/>
 </associations>
 </Column>
 </columns>
@@ -136,7 +134,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="95E41DD0-431E-7F54-CC24-2C7FFD5DA875"/>
+<colUsage columnID="52047221-EA83-ED5A-2788-388D073440BE"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="A24E32EB-13DB-BFE5-526E-77E581736C57" name="Classificacao_Auditor_FK">

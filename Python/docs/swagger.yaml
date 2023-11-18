@@ -348,8 +348,8 @@ paths:
     get:
       tags:
         - Gravidade
-      summary: Lista todos os gravidades
-      description: Lista todos os gravidades
+      summary: Lista todas as gravidades
+      description: Lista todas as gravidades
       operationId: getGravidade
       produces:
         - application/json
@@ -454,8 +454,8 @@ paths:
     get:
       tags:
         - Classificacao
-      summary: Lista todos os classificacoes
-      description: Lista todos os classificacoes
+      summary: Lista todas as classificacoes
+      description: Lista todas as classificacoes
       operationId: getClassificacao
       produces:
         - application/json

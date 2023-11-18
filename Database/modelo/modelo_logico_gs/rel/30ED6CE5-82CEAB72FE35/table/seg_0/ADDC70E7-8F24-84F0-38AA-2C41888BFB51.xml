@@ -8,6 +8,16 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_paciente" id="5B1A4884-F953-ACA8-D5B7-241F2EC4EDEA">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-11-18 00:25:53 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="nome" id="D3C8ED5A-B7BF-6A5E-2871-8FE29999243D">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
@@ -26,6 +36,7 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>A20ECC50-40D1-523D-5AC5-53BED7F18299</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -130,7 +141,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F3AFB4A5-7C20-CCA1-AB71-E2B37203B880"/>
+<colUsage columnID="5B1A4884-F953-ACA8-D5B7-241F2EC4EDEA"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

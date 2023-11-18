@@ -68,21 +68,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="cpf" id="0926915C-D3E0-E15A-1CB2-1948759F702D">
-<createdBy>Gabriel</createdBy>
-<createdTime>2023-11-17 01:57:26 UTC</createdTime>
-<generatorID>857B328F-8ABA-A565-316E-337E0747A03B</generatorID>
-<ownerDesignName>modelo_logico_gs</ownerDesignName>
-<engineerTo>
-<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
-</engineerTo>
-<referedAttribute>A20ECC50-40D1-523D-5AC5-53BED7F18299</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>11 CHAR</dataTypeSize>
-<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_auditor" id="4E1CADB4-B974-C30A-58AE-01893AE06E3C">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:57:35 UTC</createdTime>
@@ -93,6 +78,19 @@
 </engineerTo>
 <referedAttribute>28DCFF26-38F7-0F86-A609-B4C731F7BA7B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_paciente" id="77B52AF2-3DFF-862B-326D-E8E6BB4B1144">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-11-18 00:25:05 UTC</createdTime>
+<generatorID>857B328F-8ABA-A565-316E-337E0747A03B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<referedAttribute>8498FC00-BEB6-FD4B-D728-52AE801D10EF</referedAttribute>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
