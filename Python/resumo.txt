@@ -1,0 +1,16 @@
+Todos são do 1TDSS
+👤| Integrantes - RM:
+Augusto Barcelos Barros - 98078
+Gabriel Gribl de Carvalho - 96270
+Gabriel Souza de Queiroz - 98570
+Gabriela Zanotto Alves Rodrigues - 551629
+
+Nome da solução: MHC (Manchester Health Care)
+
+📅| Data de entrega do projeto: 24/11/2023
+
+📚| Disciplina: Computational Thinking Using Python
+
+❗| Observação importante:
+Caso o projeto imprima um erro de Instant Client, é necessário instalar o Instant Client do Oracle e extrair o arquivo .zip na pasta do projeto, disponível no link abaixo:
+https://download.oracle.com/otn_software/nt/instantclient/2112000/instantclient-basic-windows.x64-21.12.0.0.0dbru.zip

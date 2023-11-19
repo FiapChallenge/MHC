@@ -5,7 +5,7 @@ from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from cx_Oracle import makedsn, init_oracle_client
-from sqlalchemy import inspect
+from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
 from sqlalchemy.orm import validates
 import pathlib
@@ -60,7 +60,11 @@ if SELF_SIGN_CERT:
 def verify_json_keys(json, model):
     inspector = inspect(model)
     if inspector:
-        columns = [column.key for column in inspector.columns]
+        columns = [
+            column.key
+            for column in inspector.columns
+            if not column.key.startswith("id_")
+        ]
         if not all(key in columns for key in json.keys()):
             return False
     return True
@@ -95,15 +99,14 @@ def home():
 
 class Auditor(db.Model):
     __tablename__ = "AUDITOR"
-    id_auditor = db.Column(db.Integer, primary_key=True)
+    id_auditor = db.Column(db.Integer, Sequence("AUDITOR_ID_SEQ"), primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
     cpf = db.Column(db.String(11), nullable=False)
     crm = db.Column(db.String(20))
     coren = db.Column(db.String(20))
     especialidade = db.Column(db.String(50))
 
-    def __init__(self, id_auditor, nome, cpf, crm, coren, especialidade):
-        self.id_auditor = id_auditor
+    def __init__(self, nome, cpf, crm, coren, especialidade):
         self.nome = nome
         self.cpf = cpf
         self.crm = crm
@@ -115,24 +118,34 @@ class Auditor(db.Model):
 
     @validates("cpf")
     def validate_cpf(self, key, cpf):
+        if not cpf:
+            return cpf
+        if not cpf.isdigit():
+            raise ValueError("CPF deve conter apenas números")
         if len(cpf) != 11:
             raise ValueError("CPF deve ter 11 dígitos")
         return cpf
 
     @validates("crm")
     def validate_crm(self, key, crm):
+        if not crm:
+            return crm
         if len(crm) > 20:
             raise ValueError("CRM deve ter no máximo 20 dígitos")
         return crm
 
     @validates("coren")
     def validate_coren(self, key, coren):
+        if not coren:
+            return coren
         if len(coren) > 20:
             raise ValueError("COREN deve ter no máximo 20 dígitos")
         return coren
 
     @validates("especialidade")
     def validate_especialidade(self, key, especialidade):
+        if not especialidade:
+            return especialidade
         if len(especialidade) > 50:
             raise ValueError("Especialidade deve ter no máximo 50 dígitos")
         return especialidade
@@ -150,7 +163,9 @@ class Auditor(db.Model):
 
 class Classificacao(db.Model):
     __tablename__ = "CLASSIFICACAO"
-    id_classificacao = db.Column(db.Integer, primary_key=True)
+    id_classificacao = db.Column(
+        db.Integer, Sequence("CLASSIFICACAO_ID_SEQ"), primary_key=True
+    )
     data_hora_classificacao = db.Column(db.DateTime, nullable=False)
     gravidade_id_gravidade = db.Column(db.Integer, nullable=False)
     sinal_id_sinal = db.Column(db.Integer, nullable=False)
@@ -159,14 +174,12 @@ class Classificacao(db.Model):
 
     def __init__(
         self,
-        id_classificacao,
         data_hora_classificacao,
         gravidade_id_gravidade,
         sinal_id_sinal,
         paciente_id_paciente,
         auditor_id_auditor,
     ):
-        self.id_classificacao = id_classificacao
         self.data_hora_classificacao = data_hora_classificacao
         self.gravidade_id_gravidade = gravidade_id_gravidade
         self.sinal_id_sinal = sinal_id_sinal
@@ -193,13 +206,12 @@ class Classificacao(db.Model):
 
 class Gravidade(db.Model):
     __tablename__ = "GRAVIDADE"
-    id_gravidade = db.Column(db.Integer, primary_key=True)
+    id_gravidade = db.Column(db.Integer, Sequence("GRAVIDADE_ID_SEQ"), primary_key=True)
     nome_gravidade = db.Column(db.String(20), nullable=False)
     nome_cor = db.Column(db.String(20), nullable=False)
     hexadecimal_cor = db.Column(db.String(6))
 
-    def __init__(self, id_gravidade, nome_gravidade, nome_cor, hexadecimal_cor=None):
-        self.id_gravidade = id_gravidade
+    def __init__(self, nome_gravidade, nome_cor, hexadecimal_cor=None):
         self.nome_gravidade = nome_gravidade
         self.nome_cor = nome_cor
         self.hexadecimal_cor = hexadecimal_cor
@@ -218,7 +230,7 @@ class Gravidade(db.Model):
 
 class Paciente(db.Model):
     __tablename__ = "PACIENTE"
-    id_paciente = db.Column(db.Integer, primary_key=True)
+    id_paciente = db.Column(db.Integer, Sequence("PACIENTE_ID_SEQ"), primary_key=True)
     nome = db.Column(db.String(50))
     cpf = db.Column(db.String(11))
     rg = db.Column(db.String(9))
@@ -231,7 +243,6 @@ class Paciente(db.Model):
 
     def __init__(
         self,
-        id_paciente,
         nome,
         cpf,
         rg,
@@ -242,7 +253,6 @@ class Paciente(db.Model):
         altura,
         peso,
     ):
-        self.id_paciente = id_paciente
         self.nome = nome
         self.cpf = cpf
         self.rg = rg
@@ -277,7 +287,7 @@ class Paciente(db.Model):
 
 class Sinal(db.Model):
     __tablename__ = "SINAL"
-    id_sinal = db.Column(db.Integer, primary_key=True)
+    id_sinal = db.Column(db.Integer, Sequence("SINAL_ID_SEQ"), primary_key=True)
     nome = db.Column(db.String(60), nullable=False)
     descricao = db.Column(db.String(700))
 
@@ -295,6 +305,10 @@ class Sinal(db.Model):
             "nome": self.nome,
             "descricao": self.descricao,
         }
+
+
+app.app_context().push()
+db.create_all()
 
 
 class AuditorResource(Resource):

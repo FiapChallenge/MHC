@@ -563,6 +563,7 @@ definitions:
     properties:
       id_auditor:
         type: integer
+        readOnly: true
         example: 1
       nome:
         type: string
@@ -584,6 +585,7 @@ definitions:
     properties:
       id_paciente:
         type: integer
+        readOnly: true
         example: 1
       nome:
         type: string
@@ -620,6 +622,7 @@ definitions:
     properties:
       id_sinal:
         type: integer
+        readOnly: true
         example: 1
       nome:
         type: string
@@ -632,6 +635,7 @@ definitions:
     properties:
       id_gravidade:
         type: integer
+        readOnly: true
         example: 1
       nome_gravidade:
         type: string
@@ -647,6 +651,7 @@ definitions:
     properties:
       id_classificacao:
         type: integer
+        readOnly: true
         example: 1
       data_hora_classificacao:
         type: string
