@@ -107,6 +107,11 @@ class Auditor(db.Model):
     especialidade = db.Column(db.String(50))
 
     def __init__(self, nome, cpf, crm, coren, especialidade):
+        self.validate_cpf(cpf)
+        self.validate_crm(crm)
+        self.validate_coren(coren)
+        self.validate_especialidade(especialidade)
+
         self.nome = nome
         self.cpf = cpf
         self.crm = crm
@@ -116,8 +121,8 @@ class Auditor(db.Model):
     def __repr__(self):
         return f"<Auditor {self.nome}>"
 
-    @validates("cpf")
-    def validate_cpf(self, key, cpf):
+    @classmethod
+    def validate_cpf(cls, cpf):
         if not cpf:
             return cpf
         if not cpf.isdigit():
@@ -126,24 +131,24 @@ class Auditor(db.Model):
             raise ValueError("CPF deve ter 11 dígitos")
         return cpf
 
-    @validates("crm")
-    def validate_crm(self, key, crm):
+    @classmethod
+    def validate_crm(cls, crm):
         if not crm:
             return crm
         if len(crm) > 20:
             raise ValueError("CRM deve ter no máximo 20 dígitos")
         return crm
 
-    @validates("coren")
-    def validate_coren(self, key, coren):
+    @classmethod
+    def validate_coren(cls, coren):
         if not coren:
             return coren
         if len(coren) > 20:
             raise ValueError("COREN deve ter no máximo 20 dígitos")
         return coren
 
-    @validates("especialidade")
-    def validate_especialidade(self, key, especialidade):
+    @classmethod
+    def validate_especialidade(cls, especialidade):
         if not especialidade:
             return especialidade
         if len(especialidade) > 50:
@@ -320,7 +325,10 @@ class AuditorResource(Resource):
         data = request.get_json()
         if not verify_json_keys(data, Auditor):
             return {"message": "Invalid JSON keys"}, 400
-        auditor = Auditor(**data)
+        try:
+            auditor = Auditor(**data)
+        except ValueError as e:
+            return {"message": f"Erro ao salvar auditor: {e}"}, 400
         try:
             db.session.add(auditor)
             db.session.commit()
@@ -380,7 +388,11 @@ class ClassificacaoResource(Resource):
         )
         if not verify_json_keys(data, Classificacao):
             return {"message": "Invalid JSON keys"}, 400
-        classificacao = Classificacao(**data)
+
+        try:
+            classificacao = Classificacao(**data)
+        except ValueError as e:
+            return {"message": f"Erro ao salvar classificacao: {e}"}, 400
         try:
             db.session.add(classificacao)
             db.session.commit()
@@ -439,7 +451,10 @@ class GravidadeResource(Resource):
         data = request.get_json()
         if not verify_json_keys(data, Gravidade):
             return {"message": "Invalid JSON keys"}, 400
-        gravidade = Gravidade(**data)
+        try:
+            gravidade = Gravidade(**data)
+        except ValueError as e:
+            return {"message": f"Erro ao salvar gravidade: {e}"}, 400
         try:
             db.session.add(gravidade)
             db.session.commit()
@@ -502,7 +517,10 @@ class PacienteResource(Resource):
             if data.get("data_hora_saida")
             else None
         )
-        paciente = Paciente(**data)
+        try:
+            paciente = Paciente(**data)
+        except ValueError as e:
+            return {"message": f"Erro ao salvar paciente: {e}"}, 400
         try:
             db.session.add(paciente)
             db.session.commit()
@@ -569,7 +587,10 @@ class SinalResource(Resource):
         data = request.get_json()
         if not verify_json_keys(data, Sinal):
             return {"message": "Invalid JSON keys"}, 400
-        sinal = Sinal(**data)
+        try:
+            sinal = Sinal(**data)
+        except ValueError as e:
+            return {"message": f"Erro ao salvar sinal: {e}"}, 400
         try:
             db.session.add(sinal)
             db.session.commit()
