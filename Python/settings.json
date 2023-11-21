@@ -1,4 +1,7 @@
 {
   "clear_output": true,
-  "sort_by": "ID"
+  "sort_by": "ID",
+  "export": {
+    "format": "json"
+  }
 }

@@ -62,6 +62,8 @@ paths:
           description: Created
           schema:
             $ref: "#/definitions/Auditor"
+        400:
+          description: Bad Request
   /auditor/{id}:
     get:
       tags:
@@ -168,6 +170,8 @@ paths:
           description: Created
           schema:
             $ref: "#/definitions/Paciente"
+        400:
+          description: Bad Request
   /paciente/{id}:
     get:
       tags:
@@ -274,6 +278,8 @@ paths:
           description: Created
           schema:
             $ref: "#/definitions/Sinal"
+        400:
+          description: Bad Request
   /sinal/{id}:
     get:
       tags:
@@ -380,6 +386,8 @@ paths:
           description: Created
           schema:
             $ref: "#/definitions/Gravidade"
+        400:
+          description: Bad Request
   /gravidade/{id}:
     get:
       tags:
@@ -486,6 +494,8 @@ paths:
           description: Created
           schema:
             $ref: "#/definitions/Classificacao"
+        400:
+          description: Bad Request
   /classificacao/{id}:
     get:
       tags:

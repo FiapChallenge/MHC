@@ -2,9 +2,9 @@ import inspect
 import json
 import os
 import textwrap
-
-from matplotlib.pyplot import cla
+import csv
 from api import Auditor
+from tabulate import tabulate
 from classes_crud import (
     Auditor,
     AuditorCRUD,
@@ -17,13 +17,12 @@ from classes_crud import (
     Classificacao,
     ClassificacaoCRUD,
 )
-from tabulate import tabulate
 
 try:
     with open("settings.json", "r", encoding="utf-8") as f:
         config = json.load(f)
 except FileNotFoundError:
-    config = {"clear_output": False, "sort_by": "ID"}
+    config = {"clear_output": False, "sort_by": "ID", "export": {format: "json"}}
 
 
 def wrap_text(sentence, width=40):
@@ -191,13 +190,20 @@ def select_menu(classe, classeCrud):
 
 
 def select_all(classeCrud):
-    objetos = classeCrud.get_all()
+    objetos = classeCrud.get_all(sort_by=config["sort_by"])
     if objetos:
         for row in objetos:
             for key, value in row.items():
                 if len(str(value)) > 40:
                     row[key] = wrap_text(str(value))
         print(tabulate(objetos, headers="keys", tablefmt="fancy_grid"))
+        answer = input(f"Deseja exportar para {config['export']['format']}? (S/N): ")
+        if answer.lower() == "s":
+            match config["export"]["format"]:
+                case "csv":
+                    export_csv(objetos)
+                case "json":
+                    export_json(objetos)
     else:
         print("Nenhum registro encontrado")
 
@@ -207,7 +213,7 @@ def select_by_id(classeCrud):
     if not id.isnumeric():
         print("Digite um número")
         select_by_id(classeCrud)
-    objeto = classeCrud.get_by_id(id)
+    objeto = classeCrud.get_by_id(id, sort_by=config["sort_by"])
     if objeto:
         print(tabulate([objeto], headers="keys", tablefmt="fancy_grid"))
     else:
@@ -242,12 +248,39 @@ def select_by_field_menu(classe, classeCrud):
 
 def select_by_field(classeCrud, campo):
     valor = input(f"Digite o valor para {campo}: ")
-    objetos = classeCrud.get_by_field(campo, valor)
+    objetos = classeCrud.get_by_field(campo, valor, sort_by=config["sort_by"])
     if objetos:
         for row in objetos:
             for key, value in row.items():
                 if len(str(value)) > 40:
                     row[key] = wrap_text(str(value))
         print(tabulate(objetos, headers="keys", tablefmt="fancy_grid"))
+        answer = input(f"Deseja exportar para {config['export']['format']}? (S/N): ")
+        if answer.lower() == "s":
+            match config["export"]["format"]:
+                case "csv":
+                    export_csv(objetos)
+                case "json":
+                    export_json(objetos)
     else:
         print("Nenhum registro encontrado")
+
+
+def export_csv(obj):
+    for row in obj:
+        for key, value in row.items():
+            if isinstance(value, str):
+                row[key] = value.replace("\n", " ")
+    with open("export.csv", "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=obj[0].keys(), delimiter=";")
+        writer.writeheader()
+        writer.writerows(obj)
+
+
+def export_json(obj):
+    for row in obj:
+        for key, value in row.items():
+            if isinstance(value, str):
+                row[key] = value.replace("\n", " ")
+    with open("export.json", "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=4)

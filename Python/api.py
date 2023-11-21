@@ -7,7 +7,6 @@ from flask_talisman import Talisman
 from cx_Oracle import makedsn, init_oracle_client
 from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
-from sqlalchemy.orm import validates
 import pathlib
 import yaml
 
@@ -97,6 +96,17 @@ def home():
     """
 
 
+def validate_attributes(func):
+    def wrapper(self, *args, **kwargs):
+        for attr_name, value in kwargs.items():
+            validator_method = getattr(self.__class__, f"validate_{attr_name}", None)
+            if validator_method:
+                kwargs[attr_name] = validator_method(value)
+        return func(self, *args, **kwargs)
+
+    return wrapper
+
+
 class Auditor(db.Model):
     __tablename__ = "AUDITOR"
     id_auditor = db.Column(db.Integer, Sequence("AUDITOR_ID_SEQ"), primary_key=True)
@@ -106,12 +116,8 @@ class Auditor(db.Model):
     coren = db.Column(db.String(20))
     especialidade = db.Column(db.String(50))
 
+    @validate_attributes
     def __init__(self, nome, cpf, crm, coren, especialidade):
-        self.validate_cpf(cpf)
-        self.validate_crm(crm)
-        self.validate_coren(coren)
-        self.validate_especialidade(especialidade)
-
         self.nome = nome
         self.cpf = cpf
         self.crm = crm
@@ -155,6 +161,14 @@ class Auditor(db.Model):
             raise ValueError("Especialidade deve ter no máximo 50 dígitos")
         return especialidade
 
+    @classmethod
+    def validate_nome(cls, nome):
+        if not nome:
+            raise ValueError("Nome não pode ser vazio")
+        if len(nome) > 50:
+            raise ValueError("Nome deve ter no máximo 50 dígitos")
+        return nome
+
     def json(self):
         return {
             "id_auditor": self.id_auditor,
@@ -177,6 +191,7 @@ class Classificacao(db.Model):
     paciente_id_paciente = db.Column(db.Integer, nullable=False)
     auditor_id_auditor = db.Column(db.Integer, nullable=False)
 
+    @validate_attributes
     def __init__(
         self,
         data_hora_classificacao,
@@ -190,6 +205,36 @@ class Classificacao(db.Model):
         self.sinal_id_sinal = sinal_id_sinal
         self.paciente_id_paciente = paciente_id_paciente
         self.auditor_id_auditor = auditor_id_auditor
+
+    @classmethod
+    def validate_data_hora_classificacao(cls, data_hora_classificacao):
+        if not data_hora_classificacao:
+            raise ValueError("Data e hora da classificação não pode ser vazio")
+        return data_hora_classificacao
+
+    @classmethod
+    def validate_gravidade_id_gravidade(cls, gravidade_id_gravidade):
+        if not gravidade_id_gravidade:
+            raise ValueError("Gravidade não pode ser vazio")
+        return gravidade_id_gravidade
+
+    @classmethod
+    def validate_sinal_id_sinal(cls, sinal_id_sinal):
+        if not sinal_id_sinal:
+            raise ValueError("Sinal não pode ser vazio")
+        return sinal_id_sinal
+
+    @classmethod
+    def validate_paciente_id_paciente(cls, paciente_id_paciente):
+        if not paciente_id_paciente:
+            raise ValueError("Paciente não pode ser vazio")
+        return paciente_id_paciente
+
+    @classmethod
+    def validate_auditor_id_auditor(cls, auditor_id_auditor):
+        if not auditor_id_auditor:
+            raise ValueError("Auditor não pode ser vazio")
+        return auditor_id_auditor
 
     def __repr__(self):
         return f"<Classificacao {self.id_classificacao}>"
@@ -216,10 +261,35 @@ class Gravidade(db.Model):
     nome_cor = db.Column(db.String(20), nullable=False)
     hexadecimal_cor = db.Column(db.String(6))
 
+    @validate_attributes
     def __init__(self, nome_gravidade, nome_cor, hexadecimal_cor=None):
         self.nome_gravidade = nome_gravidade
         self.nome_cor = nome_cor
         self.hexadecimal_cor = hexadecimal_cor
+
+    @classmethod
+    def validate_nome_gravidade(cls, nome_gravidade):
+        if not nome_gravidade:
+            raise ValueError("Nome da gravidade não pode ser vazio")
+        if len(nome_gravidade) > 20:
+            raise ValueError("Nome da gravidade deve ter no máximo 20 dígitos")
+        return nome_gravidade
+
+    @classmethod
+    def validate_nome_cor(cls, nome_cor):
+        if not nome_cor:
+            raise ValueError("Nome da cor não pode ser vazio")
+        if len(nome_cor) > 20:
+            raise ValueError("Nome da cor deve ter no máximo 20 dígitos")
+        return nome_cor
+
+    @classmethod
+    def validate_hexadecimal_cor(cls, hexadecimal_cor):
+        if not hexadecimal_cor:
+            return hexadecimal_cor
+        if len(hexadecimal_cor) > 6:
+            raise ValueError("Hexadecimal da cor deve ter no máximo 6 dígitos")
+        return hexadecimal_cor
 
     def __repr__(self):
         return f"<Gravidade {self.nome_gravidade}>"
@@ -246,6 +316,7 @@ class Paciente(db.Model):
     altura = db.Column(db.Integer)
     peso = db.Column(db.Integer)
 
+    @validate_attributes
     def __init__(
         self,
         nome,
@@ -267,6 +338,84 @@ class Paciente(db.Model):
         self.idade = idade
         self.altura = altura
         self.peso = peso
+
+    @classmethod
+    def validate_nome(cls, nome):
+        if not nome:
+            raise ValueError("Nome não pode ser vazio")
+        if len(nome) > 50:
+            raise ValueError("Nome deve ter no máximo 50 dígitos")
+        return nome
+
+    @classmethod
+    def validate_cpf(cls, cpf):
+        if not cpf:
+            return cpf
+        if not cpf.isdigit():
+            raise ValueError("CPF deve conter apenas números")
+        if len(cpf) != 11:
+            raise ValueError("CPF deve ter 11 dígitos")
+        return cpf
+
+    @classmethod
+    def validate_rg(cls, rg):
+        if not rg:
+            return rg
+        if not rg.isdigit():
+            raise ValueError("RG deve conter apenas números")
+        if len(rg) != 9:
+            raise ValueError("RG deve ter 9 dígitos")
+        return rg
+
+    @classmethod
+    def validate_data_hora_entrada(cls, data_hora_entrada):
+        if not data_hora_entrada:
+            raise ValueError("Data e hora de entrada não pode ser vazio")
+        return data_hora_entrada
+
+    @classmethod
+    def validate_data_hora_saida(cls, data_hora_saida):
+        if not data_hora_saida:
+            return data_hora_saida
+        return data_hora_saida
+
+    @classmethod
+    def validate_sexo(cls, sexo):
+        if not sexo:
+            return sexo
+        if len(sexo) > 1:
+            raise ValueError("Sexo deve ter no máximo 1 dígito")
+        return sexo
+
+    @classmethod
+    def validate_idade(cls, idade):
+        if not idade:
+            return idade
+        if not idade.isdigit():
+            raise ValueError("Idade deve conter apenas números")
+        if len(idade) > 3:
+            raise ValueError("Idade deve ter no máximo 3 dígitos")
+        return idade
+
+    @classmethod
+    def validate_altura(cls, altura):
+        if not altura:
+            return altura
+        if not altura.isdigit():
+            raise ValueError("Altura deve conter apenas números")
+        if len(altura) > 3:
+            raise ValueError("Altura deve ter no máximo 3 dígitos")
+        return altura
+
+    @classmethod
+    def validate_peso(cls, peso):
+        if not peso:
+            return peso
+        if not peso.isdigit():
+            raise ValueError("Peso deve conter apenas números")
+        if len(peso) > 3:
+            raise ValueError("Peso deve ter no máximo 3 dígitos")
+        return peso
 
     def __repr__(self):
         return f"<Paciente {self.nome}>"
@@ -296,10 +445,27 @@ class Sinal(db.Model):
     nome = db.Column(db.String(60), nullable=False)
     descricao = db.Column(db.String(700))
 
+    @validate_attributes
     def __init__(self, id_sinal, nome, descricao=None):
         self.id_sinal = id_sinal
         self.nome = nome
         self.descricao = descricao
+
+    @classmethod
+    def validate_nome(cls, nome):
+        if not nome:
+            raise ValueError("Nome não pode ser vazio")
+        if len(nome) > 60:
+            raise ValueError("Nome deve ter no máximo 60 dígitos")
+        return nome
+
+    @classmethod
+    def validate_descricao(cls, descricao):
+        if not descricao:
+            return descricao
+        if len(descricao) > 700:
+            raise ValueError("Descrição deve ter no máximo 700 dígitos")
+        return descricao
 
     def __repr__(self):
         return f"<Sinal {self.nome}>"
