@@ -1,0 +1,684 @@
+swagger: "2.0"
+info:
+  title: API Classificação de Risco
+  description: |-
+    API para classificação de risco de pacientes utilizando o protocolo de Manchester
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Augusto
+    email: augustobb@live.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+basePath: /MHC/api
+schemes:
+  - "http"
+tags:
+  - name: Auditor
+    description: Auditor
+  - name: Paciente
+    description: Paciente
+  - name: Sinal
+    description: Sinal
+  - name: Gravidade
+    description: Gravidade
+  - name: Classificacao
+    description: Classificacao
+paths:
+  /auditor:
+    get:
+      tags:
+        - Auditor
+      summary: Lista todos os auditores
+      description: Lista todos os auditores
+      operationId: getAuditor
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Auditor"
+    post:
+      tags:
+        - Auditor
+      summary: Cria um auditor
+      description: Cria um auditor
+      operationId: createAuditor
+      produces:
+        - application/json
+      parameters:
+        - name: auditor
+          in: body
+          description: auditor
+          required: true
+          schema:
+            $ref: "#/definitions/Auditor"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Auditor"
+        400:
+          description: Bad Request
+  /auditor/{id}:
+    get:
+      tags:
+        - Auditor
+      summary: Busca auditor por id
+      description: Busca auditor por id
+      operationId: getAuditorById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do auditor
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Auditor"
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Auditor
+      summary: Deleta auditor por id
+      description: Deleta auditor por id
+      operationId: deleteAuditorById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do auditor
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Auditor"
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Auditor
+      summary: Atualiza um auditor
+      description: Atualiza um auditor existente
+      operationId: updateAuditor
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID do auditor
+          required: true
+          type: integer
+        - in: body
+          name: auditor
+          description: Dados do auditor a serem atualizados
+          required: true
+          schema:
+            $ref: "#/definitions/Auditor"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Auditor"
+        404:
+          description: Not Found
+  /paciente:
+    get:
+      tags:
+        - Paciente
+      summary: Lista todos os pacientes
+      description: Lista todos os pacientes
+      operationId: getPaciente
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Paciente"
+    post:
+      tags:
+        - Paciente
+      summary: Cria um paciente
+      description: Cria um paciente
+      operationId: createPaciente
+      produces:
+        - application/json
+      parameters:
+        - name: paciente
+          in: body
+          description: paciente
+          required: true
+          schema:
+            $ref: "#/definitions/Paciente"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Paciente"
+        400:
+          description: Bad Request
+  /paciente/{id}:
+    get:
+      tags:
+        - Paciente
+      summary: Busca paciente por id
+      description: Busca paciente por id
+      operationId: getPacienteById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do paciente
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Paciente"
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Paciente
+      summary: Deleta paciente por id
+      description: Deleta paciente por id
+      operationId: deletePacienteById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do paciente
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Paciente"
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Paciente
+      summary: Atualiza um paciente
+      description: Atualiza um paciente
+      operationId: updatePaciente
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do paciente
+          required: true
+          type: integer
+        - in: body
+          name: paciente
+          description: Dados do paciente a serem atualizados
+          required: true
+          schema:
+            $ref: "#/definitions/Paciente"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Paciente"
+        404:
+          description: Not Found
+  /sinal:
+    get:
+      tags:
+        - Sinal
+      summary: Lista todos os sinais
+      description: Lista todos os sinais
+      operationId: getSinal
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Sinal"
+    post:
+      tags:
+        - Sinal
+      summary: Cria um sinal
+      description: Cria um sinal
+      operationId: createSinal
+      produces:
+        - application/json
+      parameters:
+        - name: sinal
+          in: body
+          description: sinal
+          required: true
+          schema:
+            $ref: "#/definitions/Sinal"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Sinal"
+        400:
+          description: Bad Request
+  /sinal/{id}:
+    get:
+      tags:
+        - Sinal
+      summary: Busca sinal por id
+      description: Busca sinal por id
+      operationId: getSinalById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do sinal
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Sinal"
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Sinal
+      summary: Deleta sinal por id
+      description: Deleta sinal por id
+      operationId: deleteSinalById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do sinal
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Sinal"
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Sinal
+      summary: Atualiza um sinal
+      description: Atualiza um sinal
+      operationId: updateSinal
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do sinal
+          required: true
+          type: integer
+        - in: body
+          name: sinal
+          description: Dados do sinal a serem atualizados
+          required: true
+          schema:
+            $ref: "#/definitions/Sinal"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Sinal"
+        404:
+          description: Not Found
+  /gravidade:
+    get:
+      tags:
+        - Gravidade
+      summary: Lista todas as gravidades
+      description: Lista todas as gravidades
+      operationId: getGravidade
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Gravidade"
+    post:
+      tags:
+        - Gravidade
+      summary: Cria um gravidade
+      description: Cria um gravidade
+      operationId: createGravidade
+      produces:
+        - application/json
+      parameters:
+        - name: gravidade
+          in: body
+          description: gravidade
+          required: true
+          schema:
+            $ref: "#/definitions/Gravidade"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Gravidade"
+        400:
+          description: Bad Request
+  /gravidade/{id}:
+    get:
+      tags:
+        - Gravidade
+      summary: Busca gravidade por id
+      description: Busca gravidade por id
+      operationId: getGravidadeById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do gravidade
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Gravidade"
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Gravidade
+      summary: Deleta gravidade por id
+      description: Deleta gravidade por id
+      operationId: deleteGravidadeById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do gravidade
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Gravidade"
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Gravidade
+      summary: Atualiza um gravidade
+      description: Atualiza um gravidade
+      operationId: updateGravidade
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do gravidade
+          required: true
+          type: integer
+        - in: body
+          name: gravidade
+          description: Dados do gravidade a serem atualizados
+          required: true
+          schema:
+            $ref: "#/definitions/Gravidade"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Gravidade"
+        404:
+          description: Not Found
+  /classificacao:
+    get:
+      tags:
+        - Classificacao
+      summary: Lista todas as classificacoes
+      description: Lista todas as classificacoes
+      operationId: getClassificacao
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Classificacao"
+    post:
+      tags:
+        - Classificacao
+      summary: Cria um classificacao
+      description: Cria um classificacao
+      operationId: createClassificacao
+      produces:
+        - application/json
+      parameters:
+        - name: classificacao
+          in: body
+          description: classificacao
+          required: true
+          schema:
+            $ref: "#/definitions/Classificacao"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Classificacao"
+        400:
+          description: Bad Request
+  /classificacao/{id}:
+    get:
+      tags:
+        - Classificacao
+      summary: Busca classificacao por id
+      description: Busca classificacao por id
+      operationId: getClassificacaoById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do classificacao
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Classificacao"
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Classificacao
+      summary: Deleta classificacao por id
+      description: Deleta classificacao por id
+      operationId: deleteClassificacaoById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do classificacao
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Classificacao"
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Classificacao
+      summary: Atualiza um classificacao
+      description: Atualiza um classificacao
+      operationId: updateClassificacao
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id do classificacao
+          required: true
+          type: integer
+        - in: body
+          name: classificacao
+          description: Dados do classificacao a serem atualizados
+          required: true
+          schema:
+            $ref: "#/definitions/Classificacao"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Classificacao"
+        404:
+          description: Not Found
+
+definitions:
+  Auditor:
+    type: object
+    properties:
+      id:
+        type: integer
+        readOnly: true
+        example: 1
+      nome:
+        type: string
+        example: Augusto
+      cpf:
+        type: string
+        example: "48232282860"
+      crm:
+        type: string
+        example: "123456"
+      coren:
+        type: string
+        example: "123456"
+      especialidade:
+        type: string
+        example: Cardiologista
+  Paciente:
+    type: object
+    properties:
+      id:
+        type: integer
+        readOnly: true
+        example: 1
+      nome:
+        type: string
+        example: Augusto
+      cpf:
+        type: string
+        example: "48232282860"
+      rg:
+        type: string
+        example: "547912195"
+      dataHoraEntrada:
+        type: string
+        example: "2021-05-01T12:00:00"
+      dataHoraSaida:
+        type: string
+        example: "2021-05-01T12:00:00"
+      sexo:
+        type: string
+        enum:
+          - M
+          - F
+        example: M
+      idade:
+        type: integer
+        example: 20
+      altura:
+        type: integer
+        example: 180
+      peso:
+        type: integer
+        example: 80
+  Sinal:
+    type: object
+    properties:
+      id:
+        type: integer
+        readOnly: true
+        example: 1
+      nome:
+        type: string
+        example: Febre
+      descricao:
+        type: string
+        example: Febre acima de 38 graus
+  Gravidade:
+    type: object
+    properties:
+      id:
+        type: integer
+        readOnly: true
+        example: 1
+      nomeGravidade:
+        type: string
+        example: Baixa
+      nomeCor:
+        type: string
+        example: Verde
+      hexadecimalCor:
+        type: string
+        example: #00FF00
+  Classificacao:
+    type: object
+    properties:
+      id:
+        type: integer
+        readOnly: true
+        example: 1
+      dataHoraClassificacao:
+        type: string
+        example: "2021-05-01T12:00:00"
+      gravidade:
+        type: object
+        example:
+          id: 1
+      sinal:
+        type: object
+        example:
+          id: 1
+      paciente:
+        type: object
+        example:
+          id: 1
+      auditor:
+        type: object
+        example:
+          id: 1
