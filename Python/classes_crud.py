@@ -2,7 +2,7 @@ from api import db
 from sqlalchemy.exc import IntegrityError
 
 
-class CRUD:
+class GenericCRUD:
     model = None
 
     def __init__(self, model):

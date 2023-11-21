@@ -12,7 +12,7 @@ from api import (
     Gravidade,
     Classificacao,
 )
-from classes_crud import CRUD
+from classes_crud import GenericCRUD
 
 try:
     with open("settings.json", "r", encoding="utf-8") as f:
@@ -32,19 +32,19 @@ def menu_crud(nome):
     match nome:
         case "Auditor":
             classe = Auditor
-            crud = CRUD(Auditor)
+            crud = GenericCRUD(Auditor)
         case "Paciente":
             classe = Paciente
-            crud = CRUD(Paciente)
+            crud = GenericCRUD(Paciente)
         case "Sinal":
             classe = Sinal
-            crud = CRUD(Sinal)
+            crud = GenericCRUD(Sinal)
         case "Gravidade":
             classe = Gravidade
-            crud = CRUD(Gravidade)
+            crud = GenericCRUD(Gravidade)
         case "Classificação":
             classe = Classificacao
-            crud = CRUD(Classificacao)
+            crud = GenericCRUD(Classificacao)
         case _:
             print("Tabela não encontrada")
             return

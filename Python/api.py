@@ -9,7 +9,6 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
 import pathlib
-import inspect as inspect_default
 import yaml
 
 SELF_SIGN_CERT = False
