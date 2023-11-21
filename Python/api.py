@@ -5,6 +5,7 @@ from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from cx_Oracle import makedsn, init_oracle_client
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
 import pathlib
@@ -180,6 +181,13 @@ class Auditor(db.Model):
             raise ValueError("Nome deve ter no máximo 50 dígitos")
         return nome
 
+    def update(self, Auditor):
+        self.nome = Auditor.nome
+        self.cpf = Auditor.cpf
+        self.crm = Auditor.crm
+        self.coren = Auditor.coren
+        self.especialidade = Auditor.especialidade
+
     def json(self):
         return {
             "id_auditor": self.id_auditor,
@@ -267,6 +275,13 @@ class Classificacao(db.Model):
     def __repr__(self):
         return f"<Classificacao {self.id_classificacao}>"
 
+    def update(self, Classificacao):
+        self.data_hora_classificacao = Classificacao.data_hora_classificacao
+        self.gravidade_id_gravidade = Classificacao.gravidade_id_gravidade
+        self.sinal_id_sinal = Classificacao.sinal_id_sinal
+        self.paciente_id_paciente = Classificacao.paciente_id_paciente
+        self.auditor_id_auditor = Classificacao.auditor_id_auditor
+
     def json(self):
         return {
             "id_classificacao": self.id_classificacao,
@@ -326,6 +341,11 @@ class Gravidade(db.Model):
 
     def __repr__(self):
         return f"<Gravidade {self.nome_gravidade}>"
+
+    def update(self, Gravidade):
+        self.nome_gravidade = Gravidade.nome_gravidade
+        self.nome_cor = Gravidade.nome_cor
+        self.hexadecimal_cor = Gravidade.hexadecimal_cor
 
     def json(self):
         return {
@@ -482,6 +502,17 @@ class Paciente(db.Model):
     def __repr__(self):
         return f"<Paciente {self.nome}>"
 
+    def update(self, Paciente):
+        self.nome = Paciente.nome
+        self.cpf = Paciente.cpf
+        self.rg = Paciente.rg
+        self.data_hora_entrada = Paciente.data_hora_entrada
+        self.data_hora_saida = Paciente.data_hora_saida
+        self.sexo = Paciente.sexo
+        self.idade = Paciente.idade
+        self.altura = Paciente.altura
+        self.peso = Paciente.peso
+
     def json(self):
         return {
             "id_paciente": self.id_paciente,
@@ -530,6 +561,10 @@ class Sinal(db.Model):
 
     def __repr__(self):
         return f"<Sinal {self.nome}>"
+
+    def update(self, Sinal):
+        self.nome = Sinal.nome
+        self.descricao = Sinal.descricao
 
     def json(self):
         return {
@@ -598,6 +633,10 @@ class AuditorIdResource(Resource):
         try:
             db.session.delete(auditor)
             db.session.commit()
+        except IntegrityError as e:
+            return {
+                "message": f"Erro ao deletar auditor pois existem classificações relacionadas: {e}"
+            }, 400
         except Exception as e:
             return {"message": f"Erro ao deletar auditor: {e}"}, 500
         return {"message": "Auditor deletado com sucesso."}, 200
@@ -719,6 +758,10 @@ class GravidadeIdResource(Resource):
         try:
             db.session.delete(gravidade)
             db.session.commit()
+        except IntegrityError as e:
+            return {
+                "message": f"Erro ao deletar gravidade pois existem classificações relacionadas: {e}"
+            }, 400
         except Exception as e:
             return {"message": f"Erro ao deletar gravidade: {e}"}, 500
         return {"message": "Gravidade deletada com sucesso."}, 200
@@ -789,6 +832,11 @@ class PacienteIdResource(Resource):
         try:
             db.session.delete(paciente)
             db.session.commit()
+        except IntegrityError as e:
+            return {
+                "message": f"Erro ao deletar paciente pois existem classificações relacionadas: {e}"
+            }, 400
+
         except Exception as e:
             return {"message": f"Erro ao deletar paciente: {e}"}, 500
         return {"message": "Paciente deletado com sucesso."}, 200
@@ -846,6 +894,11 @@ class SinalIdResource(Resource):
         try:
             db.session.delete(sinal)
             db.session.commit()
+        except IntegrityError as e:
+            return {
+                "message": f"Erro ao deletar sinal pois existem classificações relacionadas: {e}"
+            }, 400
+
         except Exception as e:
             return {"message": f"Erro ao deletar sinal: {e}"}, 500
         return {"message": "Sinal deletado com sucesso."}, 200

@@ -5,18 +5,14 @@ import textwrap
 import csv
 from api import Auditor
 from tabulate import tabulate
-from classes_crud import (
+from api import (
     Auditor,
-    AuditorCRUD,
     Paciente,
-    PacienteCRUD,
     Sinal,
-    SinalCRUD,
     Gravidade,
-    GravidadeCRUD,
     Classificacao,
-    ClassificacaoCRUD,
 )
+from classes_crud import CRUD
 
 try:
     with open("settings.json", "r", encoding="utf-8") as f:
@@ -36,19 +32,19 @@ def menu_crud(nome):
     match nome:
         case "Auditor":
             classe = Auditor
-            crud = AuditorCRUD()
+            crud = CRUD(Auditor)
         case "Paciente":
             classe = Paciente
-            crud = PacienteCRUD()
+            crud = CRUD(Paciente)
         case "Sinal":
             classe = Sinal
-            crud = SinalCRUD()
+            crud = CRUD(Sinal)
         case "Gravidade":
             classe = Gravidade
-            crud = GravidadeCRUD()
+            crud = CRUD(Gravidade)
         case "Classificação":
             classe = Classificacao
-            crud = ClassificacaoCRUD()
+            crud = CRUD(Classificacao)
         case _:
             print("Tabela não encontrada")
             return
@@ -136,7 +132,7 @@ def insert(classe, classeCrud):
     print(
         f"""
 --------------------------
-    INSERIR EM {classe.__name__.upper()}
+    INSERIR EM {classeCrud.model.__name__.upper()}
 """
     )
     class_instance = create_instance(classe)
@@ -150,11 +146,18 @@ def delete(classeCrud):
     print(
         f"""
 --------------------------
-    EXCLUIR DE {classeCrud.__class__.__name__.upper().replace("CRUD", "")}
+    EXCLUIR DE {classeCrud.model.__name__.upper()}
 """
     )
     id = input("Digite o ID: ")
-    removido = classeCrud.delete(id)
+    if not id.isnumeric():
+        print("Digite um número")
+        delete(classeCrud)
+    try:
+        removido = classeCrud.delete(id)
+    except ValueError as e:
+        print(e)
+        return
     if removido:
         print(removido)
         print("Removido com sucesso")
@@ -166,10 +169,13 @@ def update(classe, classeCrud):
     print(
         f"""
 --------------------------
-    ATUALIZAR EM {classe.__name__.upper()}
+    ATUALIZAR EM {classeCrud.model.__name__.upper()}
 """
     )
     id = input("Digite o ID do registro a ser atualizado: ")
+    if not id.isnumeric():
+        print("Digite um número")
+        update(classe, classeCrud)
 
     objeto = classeCrud.get_by_id(id)
     if objeto:
@@ -183,7 +189,7 @@ def update(classe, classeCrud):
 def select_menu(classe, classeCrud):
     menu = f"""
 --------------------------
-    CONSULTAR {classe.__name__.upper()}
+    CONSULTAR {classeCrud.model.__name__.upper()}
 0 - Voltar
 1 - Todos
 2 - Por ID
