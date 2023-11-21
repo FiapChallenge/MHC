@@ -8,6 +8,7 @@ from cx_Oracle import makedsn, init_oracle_client
 from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
 import pathlib
+import inspect as inspect_default
 import yaml
 
 SELF_SIGN_CERT = False
@@ -96,15 +97,22 @@ def home():
     """
 
 
-def validate_attributes(func):
-    def wrapper(self, *args, **kwargs):
-        for attr_name, value in kwargs.items():
-            validator_method = getattr(self.__class__, f"validate_{attr_name}", None)
-            if validator_method:
-                kwargs[attr_name] = validator_method(value)
-        return func(self, *args, **kwargs)
+# Cant use this decorator because changes the signature of the function and i need the original signature to use in the main.py
+# def validate_attributes(func):
+#     def wrapper(self, *args, **kwargs):
+#         for attr_name, value in kwargs.items():
+#             validator_method = getattr(self.__class__, f"validate_{attr_name}", None)
+#             if validator_method:
+#                 kwargs[attr_name] = validator_method(value)
+#         return func(self, *args, **kwargs)
+#     return wrapper
 
-    return wrapper
+
+def validate_attributes(self, **kwargs):
+    for attr_name, value in kwargs.items():
+        validator_method = getattr(self, f"validate_{attr_name}", None)
+        if validator_method:
+            setattr(self, attr_name, validator_method(value))
 
 
 class Auditor(db.Model):
@@ -116,8 +124,11 @@ class Auditor(db.Model):
     coren = db.Column(db.String(20))
     especialidade = db.Column(db.String(50))
 
-    @validate_attributes
+    #
     def __init__(self, nome, cpf, crm, coren, especialidade):
+        validate_attributes(
+            self, nome=nome, cpf=cpf, crm=crm, coren=coren, especialidade=especialidade
+        )
         self.nome = nome
         self.cpf = cpf
         self.crm = crm
@@ -130,7 +141,7 @@ class Auditor(db.Model):
     @classmethod
     def validate_cpf(cls, cpf):
         if not cpf:
-            return cpf
+            raise ValueError("CPF não pode ser vazio")
         if not cpf.isdigit():
             raise ValueError("CPF deve conter apenas números")
         if len(cpf) != 11:
@@ -191,7 +202,6 @@ class Classificacao(db.Model):
     paciente_id_paciente = db.Column(db.Integer, nullable=False)
     auditor_id_auditor = db.Column(db.Integer, nullable=False)
 
-    @validate_attributes
     def __init__(
         self,
         data_hora_classificacao,
@@ -200,6 +210,17 @@ class Classificacao(db.Model):
         paciente_id_paciente,
         auditor_id_auditor,
     ):
+        validate_attributes(
+            self,
+            data_hora_classificacao=data_hora_classificacao,
+            gravidade_id_gravidade=gravidade_id_gravidade,
+            sinal_id_sinal=sinal_id_sinal,
+            paciente_id_paciente=paciente_id_paciente,
+            auditor_id_auditor=auditor_id_auditor,
+        )
+        data_hora_classificacao = datetime.strptime(
+            data_hora_classificacao, "%Y-%m-%d %H:%M:%S"
+        )
         self.data_hora_classificacao = data_hora_classificacao
         self.gravidade_id_gravidade = gravidade_id_gravidade
         self.sinal_id_sinal = sinal_id_sinal
@@ -210,6 +231,13 @@ class Classificacao(db.Model):
     def validate_data_hora_classificacao(cls, data_hora_classificacao):
         if not data_hora_classificacao:
             raise ValueError("Data e hora da classificação não pode ser vazio")
+        try:
+            datetime.strptime(data_hora_classificacao, "%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            raise ValueError(
+                "Data e hora da classificação deve estar no formato YYYY-MM-DD HH:MM:SS (ex: 2021-01-01 00:00:00)"
+            )
+
         return data_hora_classificacao
 
     @classmethod
@@ -261,8 +289,13 @@ class Gravidade(db.Model):
     nome_cor = db.Column(db.String(20), nullable=False)
     hexadecimal_cor = db.Column(db.String(6))
 
-    @validate_attributes
     def __init__(self, nome_gravidade, nome_cor, hexadecimal_cor=None):
+        validate_attributes(
+            self,
+            nome_gravidade=nome_gravidade,
+            nome_cor=nome_cor,
+            hexadecimal_cor=hexadecimal_cor,
+        )
         self.nome_gravidade = nome_gravidade
         self.nome_cor = nome_cor
         self.hexadecimal_cor = hexadecimal_cor
@@ -316,7 +349,6 @@ class Paciente(db.Model):
     altura = db.Column(db.Integer)
     peso = db.Column(db.Integer)
 
-    @validate_attributes
     def __init__(
         self,
         nome,
@@ -329,9 +361,27 @@ class Paciente(db.Model):
         altura,
         peso,
     ):
+        validate_attributes(
+            self,
+            nome=nome,
+            cpf=cpf,
+            rg=rg,
+            data_hora_entrada=data_hora_entrada,
+            data_hora_saida=data_hora_saida,
+            sexo=sexo,
+            idade=idade,
+            altura=altura,
+            peso=peso,
+        )
         self.nome = nome
         self.cpf = cpf
         self.rg = rg
+        data_hora_entrada = datetime.strptime(data_hora_entrada, "%Y-%m-%d %H:%M:%S")
+        data_hora_saida = (
+            datetime.strptime(data_hora_saida, "%Y-%m-%d %H:%M:%S")
+            if data_hora_saida
+            else None
+        )
         self.data_hora_entrada = data_hora_entrada
         self.data_hora_saida = data_hora_saida
         self.sexo = sexo
@@ -371,12 +421,24 @@ class Paciente(db.Model):
     def validate_data_hora_entrada(cls, data_hora_entrada):
         if not data_hora_entrada:
             raise ValueError("Data e hora de entrada não pode ser vazio")
+        try:
+            datetime.strptime(data_hora_entrada, "%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            raise ValueError(
+                "Data e hora de entrada deve estar no formato YYYY-MM-DD HH:MM:SS (ex: 2021-01-01 00:00:00)"
+            )
         return data_hora_entrada
 
     @classmethod
     def validate_data_hora_saida(cls, data_hora_saida):
         if not data_hora_saida:
             return data_hora_saida
+        try:
+            datetime.strptime(data_hora_saida, "%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            raise ValueError(
+                "Data e hora de saída deve estar no formato YYYY-MM-DD HH:MM:SS (ex: 2021-01-01 00:00:00)"
+            )
         return data_hora_saida
 
     @classmethod
@@ -445,9 +507,8 @@ class Sinal(db.Model):
     nome = db.Column(db.String(60), nullable=False)
     descricao = db.Column(db.String(700))
 
-    @validate_attributes
-    def __init__(self, id_sinal, nome, descricao=None):
-        self.id_sinal = id_sinal
+    def __init__(self, nome, descricao=None):
+        validate_attributes(self, nome=nome, descricao=descricao)
         self.nome = nome
         self.descricao = descricao
 
@@ -549,9 +610,6 @@ class ClassificacaoResource(Resource):
 
     def post(self):
         data = request.get_json()
-        data["data_hora_classificacao"] = datetime.strptime(
-            data["data_hora_classificacao"], "%Y-%m-%d %H:%M:%S"
-        )
         if not verify_json_keys(data, Classificacao):
             return {"message": "Invalid JSON keys"}, 400
 
@@ -675,14 +733,6 @@ class PacienteResource(Resource):
         data = request.get_json()
         if not verify_json_keys(data, Paciente):
             return {"message": "Invalid JSON keys"}, 400
-        data["data_hora_entrada"] = datetime.strptime(
-            data["data_hora_entrada"], "%Y-%m-%d %H:%M:%S"
-        )
-        data["data_hora_saida"] = (
-            datetime.strptime(data["data_hora_saida"], "%Y-%m-%d %H:%M:%S")
-            if data.get("data_hora_saida")
-            else None
-        )
         try:
             paciente = Paciente(**data)
         except ValueError as e:

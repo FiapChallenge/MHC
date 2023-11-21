@@ -1,13 +1,9 @@
-from datetime import datetime
-
-from attr import validate
 from api import db, Auditor, Paciente, Sinal, Gravidade, Classificacao
 
 
 class AuditorCRUD:
     @staticmethod
     def type_of_sort(sort_by, direction):
-        # direction = asc or desc
         match sort_by:
             case "ID":
                 return (
@@ -157,7 +153,6 @@ class PacienteCRUD:
 
     @staticmethod
     def get_by_field(field, value, start_with=False, sort_by="ID", direction="asc"):
-        # Assuming the field is a valid attribute of the Paciente model
         filter_condition = (
             getattr(Paciente, field).ilike(f"{value}%")
             if start_with
@@ -295,7 +290,7 @@ class SinalCRUD:
 
     @staticmethod
     def delete(id):
-        sinal = db.session.get
+        sinal = db.session.get(Sinal, id)
         if sinal:
             db.session.delete(sinal)
             db.session.commit()
@@ -414,12 +409,6 @@ class ClassificacaoCRUD:
                     if direction == "asc"
                     else Classificacao.id_classificacao.desc()
                 )
-            case "DATA":
-                return (
-                    Classificacao.data_hora_classificacao.asc()
-                    if direction == "asc"
-                    else Classificacao.data_hora_classificacao.desc()
-                )
 
     @staticmethod
     def get_all(sort_by="ID", direction="asc"):
@@ -437,30 +426,6 @@ class ClassificacaoCRUD:
         if classificacao:
             return classificacao.json()
         return None
-
-    @staticmethod
-    def get_by_name(name, start_with=False, sort_by="ID", direction="asc"):
-        if start_with:
-            classificacoes = (
-                # ILIKE = case insensitive
-                Classificacao.query.filter(
-                    Classificacao.data_hora_classificacao.ilike(f"{name}%")
-                )
-                .order_by(ClassificacaoCRUD.type_of_sort(sort_by, direction))
-                .all()
-            )
-        else:
-            classificacoes = (
-                Classificacao.query.filter(
-                    Classificacao.data_hora_classificacao.ilike(f"%{name}%")
-                )
-                .order_by(ClassificacaoCRUD.type_of_sort(sort_by, direction))
-                .all()
-            )
-        lista = []
-        for classificacao in classificacoes:
-            lista.append(classificacao.json())
-        return lista
 
     @staticmethod
     def get_by_field(field, value, start_with=False, sort_by="ID", direction="asc"):

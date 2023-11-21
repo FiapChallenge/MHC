@@ -100,6 +100,8 @@ def create_instance(classe):
                     print(f"Valor inválido: {e}")
                     value = input(f"Digite o valor para {arg}: ")
 
+        if value == "":
+            value = None
         user_inputs[arg] = value
 
     class_instance = classe(**user_inputs)
@@ -131,6 +133,12 @@ def update_instance(classe, objeto):
 
 
 def insert(classe, classeCrud):
+    print(
+        f"""
+--------------------------
+    INSERIR EM {classe.__name__.upper()}
+"""
+    )
     class_instance = create_instance(classe)
     objeto = classeCrud.create(class_instance)
     key = [key for key in objeto if key.startswith("id_")][0]
@@ -139,6 +147,12 @@ def insert(classe, classeCrud):
 
 
 def delete(classeCrud):
+    print(
+        f"""
+--------------------------
+    EXCLUIR DE {classeCrud.__class__.__name__.upper().replace("CRUD", "")}
+"""
+    )
     id = input("Digite o ID: ")
     removido = classeCrud.delete(id)
     if removido:
@@ -149,6 +163,12 @@ def delete(classeCrud):
 
 
 def update(classe, classeCrud):
+    print(
+        f"""
+--------------------------
+    ATUALIZAR EM {classe.__name__.upper()}
+"""
+    )
     id = input("Digite o ID do registro a ser atualizado: ")
 
     objeto = classeCrud.get_by_id(id)
@@ -161,9 +181,9 @@ def update(classe, classeCrud):
 
 
 def select_menu(classe, classeCrud):
-    menu = """
+    menu = f"""
 --------------------------
-      CONSULTAR
+    CONSULTAR {classe.__name__.upper()}
 0 - Voltar
 1 - Todos
 2 - Por ID
@@ -213,7 +233,7 @@ def select_by_id(classeCrud):
     if not id.isnumeric():
         print("Digite um número")
         select_by_id(classeCrud)
-    objeto = classeCrud.get_by_id(id, sort_by=config["sort_by"])
+    objeto = classeCrud.get_by_id(id)
     if objeto:
         print(tabulate([objeto], headers="keys", tablefmt="fancy_grid"))
     else:
