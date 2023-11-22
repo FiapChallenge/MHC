@@ -24,14 +24,13 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>D49AF250-4ADD-BAE6-317A-E2312098C07C</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Cor_id_cor" id="0C7FEEE8-9CBC-D345-63D8-D2881C6E2B75">
+<Column name="Gravidade_id_gravidade" id="0C7FEEE8-9CBC-D345-63D8-D2881C6E2B75">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:57:41 UTC</createdTime>
 <generatorID>2725D209-3A9B-FB7B-C874-14CE6ECE90EC</generatorID>
@@ -104,7 +103,7 @@
 <colUsage columnID="C7977281-1E1E-51B0-11FE-D684DBD573AD"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="550E669A-0A80-D107-1242-5C7AE0C5CE83" name="Classificacao_Cor_FK">
+<ind_PK_UK id="550E669A-0A80-D107-1242-5C7AE0C5CE83" name="Classificacao_Gravidade_FK">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:57:41 UTC</createdTime>
 <generatorID>DAE79C8B-AEB9-EED6-59B6-F5755AA40D13</generatorID>

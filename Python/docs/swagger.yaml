@@ -571,13 +571,19 @@ definitions:
   Auditor:
     type: object
     properties:
-      id_auditor:
+      id:
         type: integer
         readOnly: true
         example: 1
       nome:
         type: string
         example: Augusto
+      email:
+        type: string
+        example: augustobb@live.com
+      senha:
+        type: string
+        example: pandorinha
       cpf:
         type: string
         example: "48232282860"

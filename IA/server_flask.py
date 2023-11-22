@@ -73,10 +73,14 @@ def prever_post():
 
     try:
         # Codifica os dados com o encoder carregado
-        data_encoded = loaded_encoder.transform(new_data[['Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope']]).toarray()
+        data_encoded = loaded_encoder.transform(
+            new_data[
+                ["Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"]
+            ]
+        ).toarray()
 
         encoded_column_names = loaded_encoder.get_feature_names_out(
-            ['Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope']
+            ["Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"]
         )
 
         data_encoded_df = pd.DataFrame(data_encoded, columns=encoded_column_names)
@@ -84,7 +88,7 @@ def prever_post():
         data_final = pd.concat([new_data, data_encoded_df], axis=1)
 
         new_data_encoded = data_final.drop(
-            ['Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope'], axis=1
+            ["Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"], axis=1
         )
     except Exception as e:
         return f"Erro ao codificar os dados: {str(e)}", 400
@@ -109,6 +113,7 @@ Exemplo de chamada POST:
 http://localhost:5000/prever 
 
 JSON de entrada:
+Examplo Saudável:
 {
     "Age": 40,
     "Sex": "M",
@@ -121,5 +126,21 @@ JSON de entrada:
     "ExerciseAngina": "N",
     "Oldpeak": 0,
     "ST_Slope": "Up"
+}
+
+Exemplo Doente:
+# 58,M,ATA,136,164,0,ST,99,Y,2,Flat
+{
+    "Age": 58,
+    "Sex": "M",
+    "ChestPainType": "ATA",
+    "RestingBP": 136,
+    "Cholesterol": 164,
+    "FastingBS": 0,
+    "RestingECG": "ST",
+    "MaxHR": 99,
+    "ExerciseAngina": "Y",
+    "Oldpeak": 2,
+    "ST_Slope": "Flat"
 }
 """

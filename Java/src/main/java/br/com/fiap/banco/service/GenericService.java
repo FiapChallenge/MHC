@@ -21,7 +21,7 @@ public abstract class GenericService<T> {
         genericDao.cadastrar(entity);
     }
 
-    protected abstract void validar(T entity) throws BadInfoException, SQLException;
+    protected abstract void validar(T entity) throws BadInfoException, SQLException, ClassNotFoundException;
 
     public void atualizar(T entity)
             throws ClassNotFoundException, SQLException, IdNotFoundException, BadInfoException {

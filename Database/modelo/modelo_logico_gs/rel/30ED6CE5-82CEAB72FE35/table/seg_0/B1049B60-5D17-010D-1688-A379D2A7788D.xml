@@ -24,7 +24,30 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>43CEC1D8-1EED-FB99-0815-A3A88841F450</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="D9533939-BC1A-F3FA-EF12-C61EAF3F53F8">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:10:14 UTC</createdTime>
+<generatorID>F28F6DB1-E3A8-0CE9-1D45-D219CC18212B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="senha" id="BB2C2925-5376-4820-4543-3FE24A70D082">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:10:14 UTC</createdTime>
+<generatorID>093F8937-D6EC-5CBC-B05D-0252A025ACDB</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -37,6 +60,7 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>6B00D0E0-726A-7AFE-E767-FED0AB6CCF78</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>

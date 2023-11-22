@@ -34,7 +34,32 @@
 <engineerTo>
 <item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="F28F6DB1-E3A8-0CE9-1D45-D219CC18212B">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:08:00 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="senha" id="093F8937-D6EC-5CBC-B05D-0252A025ACDB">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:08:09 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<engineerTo>
+<item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
+</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -48,6 +73,7 @@
 <engineerTo>
 <item key="30ED6CE5-D0BD-509F-35A2-82CEAB72FE35" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>

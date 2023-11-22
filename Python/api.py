@@ -1,4 +1,5 @@
 from datetime import datetime
+import email
 from re import template
 from flask import Flask, request
 from flask_restful import Api, Resource
@@ -6,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from cx_Oracle import makedsn, init_oracle_client
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy import Sequence, inspect
+from sqlalchemy import Sequence, inspect, null
 from flasgger import Swagger
 import pathlib
 import yaml
@@ -119,17 +120,29 @@ class Auditor(db.Model):
     __tablename__ = "AUDITOR"
     id_auditor = db.Column(db.Integer, Sequence("AUDITOR_ID_SEQ"), primary_key=True)
     nome = db.Column(db.String(50), nullable=False)
-    cpf = db.Column(db.String(11), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
+    senha = db.Column(db.String(50), nullable=False)
+    cpf = db.Column(db.String(11))
     crm = db.Column(db.String(20))
     coren = db.Column(db.String(20))
     especialidade = db.Column(db.String(50))
 
-    #
-    def __init__(self, nome, cpf, crm, coren, especialidade):
+    def __init__(
+        self, nome, email, senha, cpf=None, crm=None, coren=None, especialidade=None
+    ):
         validate_attributes(
-            self, nome=nome, cpf=cpf, crm=crm, coren=coren, especialidade=especialidade
+            self,
+            nome=nome,
+            email=email,
+            senha=senha,
+            cpf=cpf,
+            crm=crm,
+            coren=coren,
+            especialidade=especialidade,
         )
         self.nome = nome
+        self.email = email
+        self.senha = senha
         self.cpf = cpf
         self.crm = crm
         self.coren = coren
@@ -141,7 +154,7 @@ class Auditor(db.Model):
     @classmethod
     def validate_cpf(cls, cpf):
         if not cpf:
-            raise ValueError("CPF não pode ser vazio")
+            return cpf
         if not cpf.isdigit():
             raise ValueError("CPF deve conter apenas números")
         if len(cpf) != 11:
@@ -180,8 +193,28 @@ class Auditor(db.Model):
             raise ValueError("Nome deve ter no máximo 50 dígitos")
         return nome
 
+    @classmethod
+    def validate_email(cls, email):
+        if not email:
+            raise ValueError("Email não pode ser vazio")
+        if len(email) > 50:
+            raise ValueError("Email deve ter no máximo 50 dígitos")
+        if db.session.query(Auditor).filter_by(email=email).first():
+            raise ValueError("Email já cadastrado")
+        return email
+
+    @classmethod
+    def validate_senha(cls, senha):
+        if not senha:
+            raise ValueError("Senha não pode ser vazio")
+        if len(senha) > 50:
+            raise ValueError("Senha deve ter no máximo 50 dígitos")
+        return senha
+
     def update(self, Auditor):
         self.nome = Auditor.nome
+        self.email = Auditor.email
+        self.senha = Auditor.senha
         self.cpf = Auditor.cpf
         self.crm = Auditor.crm
         self.coren = Auditor.coren
@@ -191,6 +224,8 @@ class Auditor(db.Model):
         return {
             "id_auditor": self.id_auditor,
             "nome": self.nome,
+            "email": self.email,
+            "senha": self.senha,
             "cpf": self.cpf,
             "crm": self.crm,
             "coren": self.coren,

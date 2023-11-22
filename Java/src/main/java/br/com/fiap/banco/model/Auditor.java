@@ -4,6 +4,8 @@ public class Auditor {
 
     private int id;
     private String nome;
+    private String email;
+    private String senha;
     private String cpf;
     private String crm;
     private String coren;
@@ -12,17 +14,23 @@ public class Auditor {
     public Auditor() {
     }
 
-    public Auditor(String nome, String cpf, String crm, String coren, String especialidade) {
+    public Auditor(String nome, String email, String senha, String cpf, String crm, String coren,
+            String especialidade) {
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
         this.cpf = cpf;
         this.crm = crm;
         this.coren = coren;
         this.especialidade = especialidade;
     }
 
-    public Auditor(int idAuditor, String nome, String cpf, String crm, String coren, String especialidade) {
+    public Auditor(int idAuditor, String nome, String email, String senha, String cpf, String crm, String coren,
+            String especialidade) {
         this.id = idAuditor;
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
         this.cpf = cpf;
         this.crm = crm;
         this.coren = coren;
@@ -43,6 +51,22 @@ public class Auditor {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getCpf() {

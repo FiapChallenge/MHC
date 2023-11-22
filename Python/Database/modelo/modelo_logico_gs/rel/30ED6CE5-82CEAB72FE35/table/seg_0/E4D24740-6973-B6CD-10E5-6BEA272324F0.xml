@@ -37,7 +37,6 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>66358259-CB86-8E79-80AF-93823128B8FF</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -60,7 +59,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="807DC289-47D6-284C-4BC4-F6D7E37532F4" name="Cores_PK">
+<ind_PK_UK id="807DC289-47D6-284C-4BC4-F6D7E37532F4" name="Gravidade_PK">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>6F889D0C-70ED-CAC6-5D10-29ADCADD8193</generatorID>

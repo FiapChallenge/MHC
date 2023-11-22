@@ -24,12 +24,11 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>DF17ECB3-6C06-7E42-CE73-9CC8BE7ECFDF</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>60 CHAR</dataTypeSize>
-<ownDataTypeParameters>60 CHAR,,</ownDataTypeParameters>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="descricao" id="F902F16A-B112-F1B6-7422-C6F745849E31">
@@ -41,13 +40,13 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>700 CHAR</dataTypeSize>
-<ownDataTypeParameters>700 CHAR,,</ownDataTypeParameters>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="F7852D8A-1E20-FBDD-3DF6-FDCF256A43CF" name="Sinal_apresentado_PK">
+<ind_PK_UK id="F7852D8A-1E20-FBDD-3DF6-FDCF256A43CF" name="Sinal_PK">
 <createdBy>Gabriel</createdBy>
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>E87D3316-57C9-41EB-CCB1-5EB7AD992D3B</generatorID>

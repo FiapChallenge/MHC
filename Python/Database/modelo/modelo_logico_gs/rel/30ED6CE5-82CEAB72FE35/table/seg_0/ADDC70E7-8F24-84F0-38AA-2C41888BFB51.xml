@@ -62,7 +62,6 @@
 <createdTime>2023-11-17 01:51:54 UTC</createdTime>
 <generatorID>3F1AB648-CDD4-177D-3D24-48FCBF317603</generatorID>
 <ownerDesignName>modelo_logico_gs</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>

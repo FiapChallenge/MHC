@@ -578,6 +578,12 @@ definitions:
       nome:
         type: string
         example: Augusto
+      email:
+        type: string
+        example: augustobb@live.com
+      senha:
+        type: string
+        example: pandorinha
       cpf:
         type: string
         example: "48232282860"
