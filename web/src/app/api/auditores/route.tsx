@@ -5,7 +5,7 @@ export async function GET() {
     const res = await fetch("http://127.0.0.1:8080/auditor", {
       cache: "no-store",
     });
-    const data: Auditores[] = await res.json();
+    const data: Auditor[] = await res.json();
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json([]);
@@ -25,10 +25,9 @@ export async function POST(request: Request) {
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-    const data: Auditores = await res.json();
+    const data: Auditor = await res.json();
     return NextResponse.json(data);
-  }
-  catch (error) {
+  } catch (error) {
     return NextResponse.error();
   }
 }

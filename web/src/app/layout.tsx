@@ -6,6 +6,7 @@ import "./styles/animation.css";
 // @import url('https://fonts.googleapis.com/css?family=Anek Latin:700');
 import { Poppins } from "next/font/google";
 import Header from "@/components/Header/Header";
+import RecoilContextProvider from "./recoilContextProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={`${poppins.variable}`}>
       <body className={" scroll-top vsc-initialized font-body"}>
-        <Header />
-        <main className="overflow-x-hidden">{children}</main>
-        <Footer />
+        <RecoilContextProvider>
+          <Header />
+          <main className="overflow-x-hidden">{children}</main>
+          <Footer />
+        </RecoilContextProvider>
       </body>
       <Script src="js/nav.js" />
       <Script src="js/scroll.js" />

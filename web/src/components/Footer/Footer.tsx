@@ -1,4 +1,3 @@
-import React from "react";
 import GithubLogo from "@/assets/icons/github.svg";
 import YoutubeLogo from "@/assets/icons/youtube.svg";
 import Logo from "@/assets/logo/LightLogo.svg";
@@ -10,7 +9,7 @@ export default function Footer() {
     <footer className="text-base lg:pt-8 bg-background">
       <div className="w-full max-w-screen-xl p-4 mx-auto bg-background">
         <div className="md:flex md:justify-between">
-          <div className="pb-4 pt-4 md:pt-0 m-4 mt-0 mb-8 ml-0 mr-10 obs-hidden md:mb-0 lg:mr-20">
+          <div className="pb-4 pt-4 md:pt-0 md:m-4 mt-0 mb-8 ml-0 md:mr-10 obs-hidden md:mb-0 lg:mr-20">
             <a href="#start" className="flex justify-center">
               <Image
                 width={184}

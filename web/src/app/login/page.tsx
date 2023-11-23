@@ -4,13 +4,18 @@ import Logo from "@/assets/logo/LogoWithoutText.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { loggedState } from "../recoilContextProvider";
+import { useRecoilState } from "recoil";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
-export default function page() {
+export default function Login() {
   const navigate = useRouter();
-  const [auditores, setAuditores] = useState<Auditores[]>([]);
+  const [auditores, setAuditores] = useState<Auditor[]>([]);
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const [isLogged, setIsLogged] = useRecoilState(loggedState);
 
   useEffect(() => {
     const getAuditores = async () => {
@@ -18,7 +23,7 @@ export default function page() {
         const res = await fetch("http://localhost:3000/api/auditores", {
           cache: "no-store",
         });
-        const data: Auditores[] = await res.json();
+        const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
         console.log(error);
@@ -29,8 +34,6 @@ export default function page() {
 
   const submitHandle = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, senha);
-    console.log(auditores);
     const auditor = auditores.find((auditor) => auditor.email === email);
     if (auditor) {
       if (auditor.senha === senha) {
@@ -40,6 +43,8 @@ export default function page() {
 
         process.env.NEXT_PUBLIC_TOKEN_USER = token;
 
+        setIsLogged(true);
+
         navigate.push("/software");
       } else {
         alert("Senha incorreta!");
@@ -47,6 +52,12 @@ export default function page() {
     } else {
       alert("Email incorreto!");
     }
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -58,7 +69,7 @@ export default function page() {
             alt="Logo Manchester HealthCare"
             width={64}
             height={64}
-            className="animate-spin-slow pause"
+            className="animate-spin-slow pause hover:play"
           />
         </div>
         <div className="font-bold font-heading self-center text-xl sm:text-2xl uppercase text-gray-800">
@@ -107,6 +118,16 @@ export default function page() {
                 Senha:
               </label>
               <div className="relative">
+                <div
+                  className="cursor-pointer inline-flex items-center justify-center absolute right-0 top-0 h-full w-10 text-gray-400"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <IoEyeOutline className="text-gray-400 w-6 h-6" />
+                  ) : (
+                    <IoEyeOffOutline className="text-gray-400 w-6 h-6" />
+                  )}
+                </div>
                 <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                   <span>
                     <svg
@@ -124,11 +145,11 @@ export default function page() {
                 </div>
                 <input
                   id="senha"
-                  type="text"
+                  type={showPassword ? "text" : "password"}
                   name="senha"
-                  required
                   className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-accent"
                   placeholder="Senha"
+                  required
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                 />

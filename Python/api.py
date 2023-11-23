@@ -1,5 +1,4 @@
 from datetime import datetime
-import email
 from re import template
 from flask import Flask, request
 from flask_restful import Api, Resource
@@ -7,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_talisman import Talisman
 from cx_Oracle import makedsn, init_oracle_client
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy import Sequence, inspect, null
+from sqlalchemy import Sequence, inspect
 from flasgger import Swagger
 import pathlib
 import yaml

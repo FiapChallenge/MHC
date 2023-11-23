@@ -4,17 +4,24 @@ import Logo from "@/assets/logo/LogoWithoutText.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
-export default function page() {
+export default function Cadastro() {
   const router = useRouter();
   const navigate = (path: string) => {
     router.push(path);
   };
 
-  const [auditores, setAuditores] = useState<Auditores[]>([]);
+  const [auditores, setAuditores] = useState<Auditor[]>([]);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   useEffect(() => {
     const getAuditores = async () => {
@@ -22,19 +29,17 @@ export default function page() {
         const res = await fetch("http://localhost:3000/api/auditores", {
           cache: "no-store",
         });
-        const data: Auditores[] = await res.json();
+        const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
         console.log(error);
       }
     };
     getAuditores();
-    console.log(auditores);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(nome, email, senha);
     const auditor = auditores.find((auditor) => auditor.email === email);
     if (auditor) {
       alert("Email já cadastrado!");
@@ -50,12 +55,10 @@ export default function page() {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        const data: Auditores = await res.json();
-        console.log(data);
+        const data: Auditor = await res.json();
         alert("Cadastro realizado com sucesso!");
         navigate("/login");
       } catch (error) {
-        console.log(error);
         alert("Erro ao cadastrar!");
       }
     }
@@ -70,7 +73,7 @@ export default function page() {
             alt="Logo Manchester Healtcare"
             width={64}
             height={64}
-            className="animate-spin-slow pause"
+            className="animate-spin-slow pause hover:play"
           />
         </div>
         <div className="font-bold font-heading self-center text-xl sm:text-2xl uppercase text-gray-800">
@@ -164,6 +167,16 @@ export default function page() {
                 Senha:
               </label>
               <div className="relative">
+                <div
+                  className="inline-flex items-center justify-center absolute right-0 top-0 h-full w-10 text-gray-400"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <IoEyeOutline className="text-gray-400 w-6 h-6" />
+                  ) : (
+                    <IoEyeOffOutline className="text-gray-400 w-6 h-6" />
+                  )}
+                </div>
                 <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                   <span>
                     <svg
@@ -181,7 +194,7 @@ export default function page() {
                 </div>
                 <input
                   id="senha"
-                  type="text"
+                  type={showPassword ? "text" : "password"}
                   name="senha"
                   className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-accent"
                   placeholder="Senha"

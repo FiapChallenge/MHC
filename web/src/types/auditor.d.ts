@@ -1,4 +1,4 @@
-type Auditores = {
+type Auditor = {
   id_auditor: number;
   nome: string;
   email: string;

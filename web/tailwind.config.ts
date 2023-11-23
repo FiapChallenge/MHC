@@ -81,7 +81,7 @@ const config: Config = {
         },
       },
       screens: {
-        xs: "320px",
+        xs: "375px",
       },
       fontSize: {
         sm: "0.750rem",

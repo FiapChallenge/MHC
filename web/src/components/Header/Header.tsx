@@ -3,8 +3,11 @@ import Image from "next/image";
 import Logo from "@/assets/logo/LogoWithoutText.svg";
 import Link from "next/link";
 import NavLink from "./NavLink";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { loggedState } from "@/app/recoilContextProvider";
+import { IoPerson, IoPersonCircleOutline } from "react-icons/io5";
+import { useEffect } from "react";
 
 export default function Header() {
   const navigate = useRouter();
@@ -14,12 +17,16 @@ export default function Header() {
     navigate.push("/");
   };
 
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useRecoilState(loggedState);
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token-user");
-    if (token) {
+    if (
+      sessionStorage.getItem("token-user") != null &&
+      sessionStorage.getItem("token-user") != undefined
+    ) {
       setIsLogged(true);
+    } else {
+      setIsLogged(false);
     }
   }, []);
 
@@ -47,7 +54,7 @@ export default function Header() {
       </button>
 
       <nav className="fixed w-full bg-background shadow-md z-50">
-        <div className="lg:px-16 px-6 max-w-screen-xl justify-between flex flex-wrap items-center lg:py-0 py-2 mx-auto">
+        <div className="lg:px-16 xs:px-6 px-2 max-w-screen-xl justify-between flex flex-wrap items-center lg:py-0 py-2 mx-auto">
           <div className="flex flex-1 lg:flex-auto justify-between items-center py-2">
             <Link
               href="/"
@@ -59,10 +66,11 @@ export default function Header() {
                 width={64}
                 height={64}
                 className="animate-spin pause group-hover:play"
+                priority
               />
               <div>
-                <p className="font-bold font-heading text-xl">MANCHESTER</p>
-                <p className="font-heading text-lg tracking-widest">
+                <p className="font-bold font-heading text-lg xs:text-xl">MANCHESTER</p>
+                <p className="font-heading text-base xs:text-lg tracking-widest">
                   HEALTHCARE
                 </p>
               </div>
@@ -149,6 +157,12 @@ export default function Header() {
                 href="/cadastro"
               >
                 Cadastrar
+              </Link>
+              <Link
+                href={"/login"}
+                className="inline-flex lg:hidden order-1 items-center justify-center gap-x-1 lg:ml-auto lg:mr-3 py-2 px-4 lg:px-6 text-base text-gray-900 font-bold rounded-xl transition duration-200"
+              >
+                <IoPersonCircleOutline className="text-3xl" />
               </Link>
             </>
           ) : (

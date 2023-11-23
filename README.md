@@ -63,11 +63,12 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 
 <h3>BUILDING RELATIONAL DATABASE</h3>
 
-- [ ] Modelo de Dados Relacional, mais descritivo até 20 pontos;
+- [x] Modelo de Dados Relacional, mais descritivo até 20 pontos;
 
 - [x] SCRIPT DDL até (20 pontos);
 - [x] SCRIPT DML: (20 pontos);
 - [x] SCRIPT DQL até (40 pontos).
+- [x] Anexar o diagrama de classes
 
 <h3>COMPUTATIONAL THINKING USING PYTHON</h3>
 
@@ -79,11 +80,12 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 
 <h3>DOMAIN DRIVEN DESIGN</h3>
 
-- [ ] Documentação (Total 30 Pontos)
+- [x] Documentação (Total 30 Pontos)
 
-  - [ ] Especificação do projeto (Documento PDF) - (10 pontos):
-  - [ ] Diagrama de Classes (10 pontos)
-  - [ ] Protótipos de tela e DER (10 pontos)
+  - [x] Especificação do projeto (Documento PDF) - (10 pontos):
+  - [x] Diagrama de Classes (10 pontos)
+  - [x] Protótipos de tela (5 pontos)
+  - [x] DER (5 pontos)
 
 - [x] Projeto Java (Total 70 Pontos)
   - [x] Camada beans, suas classes devem conter métodos construtores, getters e setters (5 pontos);
@@ -97,30 +99,31 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 
 <h3>SOFTWARE DESIGN E TOTAL EXPERIENCE</h3>
 
-- [ ] Diagrama de Caso de Uso completa da solução (15 pontos);
+- [x] Diagrama de Caso de Uso completa da solução (15 pontos);
 
-- [ ] Diagrama de Atividades completa da solução (15 pontos);
+- [x] Diagrama de Atividades completa da solução (15 pontos);
 - [ ] Diagrama de Sequência completa da solução (15 pontos);
 - [ ] Descrição detalhada do caso de uso, com cenários principal, alternativos e de exceção (15 pontos);
 - [ ] Vídeo pitch de no máximo 3 minutos
-- [ ] Plano de negócio com:
-  - [ ] Sumário de proposta de negócio (15 pontos);
-  - [ ] Considerando que a sua Startup terá gastos de investimento de R$100.000,00 reais e ganho previsto de R$220.000,00, qual é o ROI? (10 pontos);
-  - [ ] Considerando que na operação da sua startup você gaste R$ 10.000 de custo mensal, onde R$ 3.000 são custos variáveis e R$ 7.000 são fixos. Se considerar que receita bruta média de vendas de serviços de R$ 5.000 por mês, qual o ponto de equilíbrio? (10 pontos);
-  - [ ] Uma vez que sua startup para prover serviços de suporte para a HapVida, a qual será seu primeira cliente, defina indicadores dos níveis de SLA do atendimento (5 pontos).
+- [x] Plano de negócio com:
+  - [x] Sumário de proposta de negócio (15 pontos);
+  - [x] Considerando que a sua Startup terá gastos de investimento de R$100.000,00 reais e ganho previsto de R$220.000,00, qual é o ROI? (10 pontos);
+  - [x] Considerando que na operação da sua startup você gaste R$ 10.000 de custo mensal, onde R$ 3.000 são custos variáveis e R$ 7.000 são fixos. Se considerar que receita bruta média de vendas de serviços de R$ 5.000 por mês, qual o ponto de equilíbrio? (10 pontos);
+  - [x] Uma vez que sua startup para prover serviços de suporte para a HapVida, a qual será seu primeira cliente, defina indicadores dos níveis de SLA do atendimento (5 pontos).
 
 <h3>RESPONSIVE WEB DEVELOPMENT</h3>
 
-- [ ] Padronização dos endpoints(API)
+- [x] Padronização dos endpoints(API)
 
-  - [ ] As telas criadas deverão apresentar um padrão de apresentação (CSS) (20 pontos);
+  - [x] As telas criadas deverão apresentar um padrão de apresentação (CSS) (20 pontos);
   - [ ] A navegação a acessibilidade e a usabilidade serão levadas em consideração para a correção da GS (15 pontos);
-- [ ] Componentização dos elementos (TOTAL 15 pontos)
-- [ ] Formulário de cadastro/atualização:
-  - [ ] Os dados persistidos devem permanecer na base de dados, mesmo depois da aplicação encerrada, ou seja, se fecharmos a aplicação e/ou o navegador, quando retornarmos os dados deverão ser exibidos novamente, com as alterações que foram realizadas e etc (10 pontos);
+
+- [x] Componentização dos elementos (TOTAL 15 pontos)
+- [x] Formulário de cadastro/atualização:
+  - [x] Os dados persistidos devem permanecer na base de dados, mesmo depois da aplicação encerrada, ou seja, se fecharmos a aplicação e/ou o navegador, quando retornarmos os dados deverão ser exibidos novamente, com as alterações que foram realizadas e etc (10 pontos);
   - [ ] Os dados devem ser persistidos em base de dados, além disso, a fim de evitar o tráfego desnecessário de dados pela rede, utilize estratégias que minimize esse processo, tais como: LOCALSTORAGE e/ou as APIs locais do NEXT.js que gerenciam as entradas de dados na aplicação e criam seu próprios caches. No caso de login/validação utilize SESSIONSTORAGE (10 pontos);
-  - [ ] Gerar páginas de erro e ou aviso de acordo com o Status Code HTTP, por conta dos retornos gerados na utilização dos verbos HTTP: get, put, delete, post (15 pontos);
-  - [ ] Os dados exibidos na tela e os dados que forem gravados na base dados devem ser feitos no formato JSON (15 pontos).
+  - [x] Gerar páginas de erro e ou aviso de acordo com o Status Code HTTP, por conta dos retornos gerados na utilização dos verbos HTTP: get, put, delete, post (15 pontos);
+  - [x] Os dados exibidos na tela e os dados que forem gravados na base dados devem ser feitos no formato JSON (15 pontos).
 
 <h2 name="autores">✍️ Integrantes</h2>
 <table>
