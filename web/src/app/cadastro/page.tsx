@@ -26,7 +26,7 @@ export default function Cadastro() {
   useEffect(() => {
     const getAuditores = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/auditores", {
+        const res = await fetch("http://localhost:3000/api/auditor", {
           cache: "no-store",
         });
         const data: Auditor[] = await res.json();
@@ -45,7 +45,7 @@ export default function Cadastro() {
       alert("Email já cadastrado!");
     } else {
       try {
-        const res = await fetch("http://localhost:3000/api/auditores", {
+        const res = await fetch("http://localhost:3000/api/auditor", {
           method: "POST",
           body: JSON.stringify({ nome, email, senha }),
           headers: {
@@ -65,7 +65,7 @@ export default function Cadastro() {
   };
 
   return (
-    <div className="py-28 flex flex-col items-center justify-center bg-background-50">
+    <div className="py-28 flex flex-col items-center justify-center bg-background-50 px-4">
       <div className="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-2xl w-full max-w-md">
         <div className="flex justify-center items-center pb-4">
           <Image
@@ -76,7 +76,7 @@ export default function Cadastro() {
             className="animate-spin-slow pause hover:play"
           />
         </div>
-        <div className="font-bold font-heading self-center text-xl sm:text-2xl uppercase text-gray-800">
+        <div className="font-bold font-heading self-center text-xl sm:text-2xl uppercase text-text">
           Cadastrar no MHC
         </div>
         <div className="mt-6">
@@ -84,7 +84,7 @@ export default function Cadastro() {
             <div className="flex flex-col mb-6">
               <label
                 htmlFor="nome"
-                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-text"
               >
                 Nome:
               </label>
@@ -129,7 +129,7 @@ export default function Cadastro() {
             <div className="flex flex-col mb-6">
               <label
                 htmlFor="email"
-                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-text"
               >
                 Endereço de e-mail:
               </label>
@@ -162,7 +162,7 @@ export default function Cadastro() {
             <div className="flex flex-col mb-6">
               <label
                 htmlFor="senha"
-                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-text"
               >
                 Senha:
               </label>

@@ -1,3 +1,17 @@
+let prevScrollpos = window.scrollY;
+
+let nav = document.getElementById("navbar");
+
+window.onscroll = function () {
+  let currentScrollPos = window.scrollY;
+  if (prevScrollpos > currentScrollPos || currentScrollPos < 96) {
+    nav.style.transform = "translateY(0)";
+  } else {
+    nav.style.transform = "translateY(-100%)";
+  }
+  prevScrollpos = currentScrollPos;
+};
+
 let rootMargin;
 
 if (window.innerWidth > 768) {

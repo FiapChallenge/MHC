@@ -506,30 +506,31 @@ class Paciente(db.Model):
     def validate_idade(cls, idade):
         if not idade:
             return idade
-        if not idade.isdigit():
+        if not str(idade).isdigit():
             raise ValueError("Idade deve conter apenas números")
-        if len(idade) > 3:
-            raise ValueError("Idade deve ter no máximo 3 dígitos")
+        if int(idade) > 150:
+            raise ValueError("Idade deve ser menor que 150 anos")
         return idade
 
     @classmethod
     def validate_altura(cls, altura):
         if not altura:
             return altura
-        if not altura.isdigit():
+        if not str(altura).isdigit():
             raise ValueError("Altura deve conter apenas números")
-        if len(altura) > 3:
-            raise ValueError("Altura deve ter no máximo 3 dígitos")
+
+        if int(altura) > 300:
+            raise ValueError("Altura deve ser menor que 300 cm")
         return altura
 
     @classmethod
     def validate_peso(cls, peso):
         if not peso:
             return peso
-        if not peso.isdigit():
+        if not str(peso).isdigit():
             raise ValueError("Peso deve conter apenas números")
-        if len(peso) > 3:
-            raise ValueError("Peso deve ter no máximo 3 dígitos")
+        if int(peso) > 500:
+            raise ValueError("Peso deve ser menor que 500 kg")
         return peso
 
     def __repr__(self):
@@ -634,7 +635,7 @@ class AuditorResource(Resource):
 
 class AuditorIdResource(Resource):
     def get(self, id_modelo):
-        if not id_modelo.isdigit():
+        if not str(id_modelo).isdigit():
             return {"message": "Invalid ID"}, 400
 
         auditor = db.session.get(Auditor, id_modelo)
@@ -699,7 +700,7 @@ class ClassificacaoResource(Resource):
 
 class ClassificacaoIdResource(Resource):
     def get(self, id_modelo):
-        if not id_modelo.isdigit():
+        if not str(id_modelo).isdigit():
             return {"message": "Invalid ID"}, 400
 
         classificacao = db.session.get(Classificacao, id_modelo)
@@ -761,7 +762,7 @@ class GravidadeResource(Resource):
 
 class GravidadeIdResource(Resource):
     def get(self, id_modelo):
-        if not id_modelo.isdigit():
+        if not str(id_modelo).isdigit():
             return {"message": "Invalid ID"}, 400
 
         gravidade = db.session.get(Gravidade, id_modelo)
@@ -823,7 +824,7 @@ class PacienteResource(Resource):
 
 class PacienteIdResource(Resource):
     def get(self, id_modelo):
-        if not id_modelo.isdigit():
+        if not str(id_modelo).isdigit():
             return {"message": "Invalid ID"}, 400
 
         paciente = db.session.get(Paciente, id_modelo)
@@ -898,7 +899,7 @@ class SinalResource(Resource):
 
 class SinalIdResource(Resource):
     def get(self, id_modelo):
-        if not id_modelo.isdigit():
+        if not str(id_modelo).isdigit():
             return {"message": "Invalid ID"}, 400
 
         sinal = db.session.get(Sinal, id_modelo)

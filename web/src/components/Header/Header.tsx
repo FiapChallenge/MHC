@@ -3,18 +3,21 @@ import Image from "next/image";
 import Logo from "@/assets/logo/LogoWithoutText.svg";
 import Link from "next/link";
 import NavLink from "./NavLink";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { loggedState } from "@/app/recoilContextProvider";
-import { IoPerson, IoPersonCircleOutline } from "react-icons/io5";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import { useEffect } from "react";
 
 export default function Header() {
+  const pathname = usePathname();
   const navigate = useRouter();
   const logout = () => {
     sessionStorage.removeItem("token-user");
     setIsLogged(false);
-    navigate.push("/");
+    if (pathname == "/software") {
+      navigate.push("/");
+    }
   };
 
   const [isLogged, setIsLogged] = useRecoilState(loggedState);
@@ -53,7 +56,10 @@ export default function Header() {
         </svg>
       </button>
 
-      <nav className="fixed w-full bg-background shadow-md z-50">
+      <nav
+        id="navbar"
+        className="fixed w-full duration-500 ease-in-out bg-background shadow-md z-50"
+      >
         <div className="lg:px-16 xs:px-6 px-2 max-w-screen-xl justify-between flex flex-wrap items-center lg:py-0 py-2 mx-auto">
           <div className="flex flex-1 lg:flex-auto justify-between items-center py-2">
             <Link
@@ -69,7 +75,9 @@ export default function Header() {
                 priority
               />
               <div>
-                <p className="font-bold font-heading text-lg xs:text-xl">MANCHESTER</p>
+                <p className="font-bold font-heading text-lg xs:text-xl">
+                  MANCHESTER
+                </p>
                 <p className="font-heading text-base xs:text-lg tracking-widest">
                   HEALTHCARE
                 </p>

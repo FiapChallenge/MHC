@@ -94,7 +94,7 @@ const config: Config = {
         "5xl": "4.210rem",
       },
       fontFamily: {
-        heading: ["var(--font-poppins)"],
+        heading: ["var(--font-montserrat)"],
         body: ["var(--font-poppins)"],
       },
       fontWeight: {

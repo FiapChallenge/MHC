@@ -4,7 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import "./globals.css";
 import "./styles/animation.css";
 // @import url('https://fonts.googleapis.com/css?family=Anek Latin:700');
-import { Poppins } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import Header from "@/components/Header/Header";
 import RecoilContextProvider from "./recoilContextProvider";
 
@@ -12,6 +12,13 @@ const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-poppins",
+  weight: ["400", "700"],
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
   weight: ["400", "700"],
 });
 
@@ -26,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br" className={`${poppins.variable}`}>
+    <html lang="pt-br" className={`${poppins.variable} ${montserrat.variable}`}>
       <body className={" scroll-top vsc-initialized font-body"}>
         <RecoilContextProvider>
           <Header />

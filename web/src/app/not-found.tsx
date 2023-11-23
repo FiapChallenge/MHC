@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className="mb-4 min-h-[60vh] bg-background-50 flex items-center justify-center font-heading">
+    <div className="mb-4 min-h-[60vh] bg-background-50 flex items-center justify-center font-heading px-4">
       <div className="flex items-center justify-center flex-col gap-y-2">
         <h1 className="text-6xl font-bold text-center flex gap-1 group">
           4
@@ -17,11 +17,11 @@ export default function NotFound() {
           />
           4
         </h1>
-        <h2 className="text-3xl font-bold text-center">
+        <h2 className="text-2xl xs:text-3xl font-bold text-center">
           Oops! Página não encontrada
         </h2>
         <Link
-          className="mt-8 p-4 rounded-2xl bg-azul-claro text-primary text-2xl"
+          className="mt-8 py-2 px-6 text-center bg-primary hover:bg-primary-600 text-white font-bold rounded-2xl text-xl xs:text-2xl transition duration-200"
           href="/"
         >
           Voltar para a página inicial
