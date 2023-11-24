@@ -6,11 +6,22 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { loggedState } from "../recoilContextProvider";
 import { useRecoilState } from "recoil";
-import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import {
+  IoAlertCircleOutline,
+  IoEyeOffOutline,
+  IoEyeOutline,
+} from "react-icons/io5";
+import Notification from "@/components/Notification/Notification";
 
 export default function Login() {
   const navigate = useRouter();
   const [auditores, setAuditores] = useState<Auditor[]>([]);
+  const [notification, setNotification] = useState<NotificationProps>({
+    nome: "",
+    descricao: "",
+    size: "w-6 h-6",
+    hidden: true,
+  });
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -26,7 +37,14 @@ export default function Login() {
         const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
-        console.log(error);
+        setNotification({
+          Icon: IoAlertCircleOutline,
+          nome: "Erro",
+          descricao: "Erro ao carregar banco de dados!",
+          size: "8",
+          hidden: false,
+          color: { bg: "bg-red-100", text: "text-red-900" },
+        });
       }
     };
     getAuditores();
@@ -59,10 +77,24 @@ export default function Login() {
 
         navigate.push("/software");
       } else {
-        alert("Senha incorreta!");
+        setNotification({
+          Icon: IoAlertCircleOutline,
+          nome: "Erro",
+          descricao: "Senha incorreta!",
+          size: "8",
+          hidden: false,
+          color: { bg: "bg-red-100", text: "text-red-900" },
+        });
       }
     } else {
-      alert("Email incorreto!");
+      setNotification({
+        Icon: IoAlertCircleOutline,
+        nome: "Erro",
+        descricao: "E-mail não encontrado!",
+        size: "8",
+        hidden: false,
+        color: { bg: "bg-red-100", text: "text-red-900" },
+      });
     }
   };
 
@@ -75,12 +107,15 @@ export default function Login() {
   return (
     <div className="py-28 flex flex-col items-center justify-center bg-background-50 px-4">
       <div className="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-2xl w-full max-w-md">
+        <div className="mb-8">
+          <Notification {...notification} />
+        </div>
         <div className="flex justify-center items-center pb-4">
           <Image
             src={Logo}
             alt="Logo Manchester HealthCare"
-            width={64}
-            height={64}
+            width={80}
+            height={80}
             className="animate-spin-slow pause hover:play"
           />
         </div>

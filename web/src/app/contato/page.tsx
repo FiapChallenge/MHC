@@ -4,15 +4,17 @@ import AsteriuzProfile from "@/assets/cards/asteriuz.webp";
 import GriblProfile from "@/assets/cards/gribl.jpg";
 import SouzaProfile from "@/assets/cards/souza.jpg";
 import GabsProfile from "@/assets/cards/gabs.jpg";
-import Card from "@/components/Cards/Card";
+import CardProfile from "@/components/Cards/CardProfile";
 
 export default function Contato() {
   return (
     <section className="flex justify-center items-center flex-col bg-background-50 px-4 pb-10">
-      <h1 className="font-bold font-heading text-4xl uppercase tracking-wider mb-2 mt-12 text-center">Conheça a Equipe</h1>
+      <h1 className="font-bold font-heading text-4xl uppercase tracking-wider mb-2 mt-12 text-center">
+        Conheça a <span className="fancy">Equipe</span>
+      </h1>
       <div className="min-h-[60vh] flex justify-center">
         <div className="grid lg:grid-cols-2 gap-x-24 lg:gap-y-8">
-          <Card
+          <CardProfile
             nome="Augusto Barcelos Barros"
             descricao="Bom dia! Eu sou Augusto Barcelos Barros e sou apaixonado por tecnologia desde a infância.
 Meu principal hobby é desenvolver programas que me auxiliem em atividades cotidianas e diminuam o tempo para realizar tarefas repetitivas"
@@ -24,7 +26,7 @@ Meu principal hobby é desenvolver programas que me auxiliem em atividades cotid
             funcao="Diretor de Tecnologia"
           />
           {/* Gabriel Gribl de Carvalho (Diretor de Projetos e Inovação)  */}
-          <Card
+          <CardProfile
             nome="Gabriel Gribl de Carvalho"
             descricao="Comunicativo, sociável, produtivo e organizado. Aprendendo cada dia mais sobre programação, inteligência artificial, inovação e tecnologias. Sempre aberto para novas experiências e desafios"
             imagem={GriblProfile}
@@ -34,7 +36,7 @@ Meu principal hobby é desenvolver programas que me auxiliem em atividades cotid
             ]}
             funcao="Diretor de Projetos e Inovação"
           />
-          <Card
+          <CardProfile
             nome="Gabriel Souza"
             descricao="Olá! Meu nome é Gabriel Souza de Queiroz e sou um jovem profissional em desenvolvimento na área de tecnologia. Atualmente, trabalho como jovem aprendiz em Assuntos Regulatórios na Sanofi Medley"
             imagem={SouzaProfile}
@@ -44,7 +46,7 @@ Meu principal hobby é desenvolver programas que me auxiliem em atividades cotid
             ]}
             funcao="Diretor Adm. Financeiro"
           />
-          <Card
+          <CardProfile
             nome="Gabriela Zanotto Alves "
             descricao="Sou uma pessoa que ama aprender, atualmente estou cursando análise e desenvolvimento de sistemas na FIAP, aprendo rápido e gosto de trabalhar no ramo"
             imagem={GabsProfile}

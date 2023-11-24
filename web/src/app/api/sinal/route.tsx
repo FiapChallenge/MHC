@@ -8,6 +8,6 @@ export async function GET() {
     const data: Sinal[] = await res.json();
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json([]);
+    return NextResponse.error();
   }
 }

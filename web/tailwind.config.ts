@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const plugin = require("tailwindcss/plugin");
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      textShadow: {
+        DEFAULT:
+          "1px 1px 2px #000000, 1px 1px 2px #000000, 1px 1px 2px #000000;",
+      },
       colors: {
         text: {
           DEFAULT: "#222222",

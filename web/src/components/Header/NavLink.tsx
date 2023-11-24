@@ -9,7 +9,7 @@ export default function NavLink(props: { href: string; name: string }) {
   return (
     <Link
       href={props.href}
-      className={classNames("transition-colors hover:text-primary", {
+      className={classNames("nav-link transition-colors hover:text-primary", {
         "text-primary": pathname === props.href,
       })}
     >

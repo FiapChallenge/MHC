@@ -1,7 +1,5 @@
 let prevScrollpos = window.scrollY;
 
-let nav = document.getElementById("navbar");
-
 window.onscroll = function () {
   let currentScrollPos = window.scrollY;
   if (prevScrollpos > currentScrollPos || currentScrollPos < 96) {

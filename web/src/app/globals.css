@@ -23,6 +23,32 @@
   .ani-ease-in-out {
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* animation-duration */
+  .ani-1s {
+    animation-duration: 1s;
+  }
+  .ani-2s {
+    animation-duration: 2s;
+  }
+  .ani-3s {
+    animation-duration: 3s;
+  }
+
+  /* animation-delay */
+  .ani-delay-1s {
+    animation-delay: 1s;
+  }
+  .ani-delay-2s {
+    animation-delay: 2s;
+  }
+  .ani-delay-3s {
+    animation-delay: 3s;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -55,4 +81,22 @@ body.scroll-top::-webkit-scrollbar-thumb {
 
 #menu-toggle:checked + #menu {
   display: block;
+}
+
+.fancy {
+  position: relative;
+  white-space: nowrap;
+}
+.fancy:after {
+  --deco-height: 0.25em;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--deco-height) * -0.625);
+  height: var(--deco-height);
+  background-image: url("../assets/misc/fancy-underline.svg");
+  background-size: auto 100%;
+  background-repeat: round;
+  background-position: 0em;
 }

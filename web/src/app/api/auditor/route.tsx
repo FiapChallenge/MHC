@@ -8,7 +8,8 @@ export async function GET() {
     const data: Auditor[] = await res.json();
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json([]);
+    // return NextResponse.json([]);
+    return NextResponse.error();
   }
 }
 

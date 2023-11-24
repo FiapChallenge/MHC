@@ -8,7 +8,7 @@ export async function GET() {
     const data: Paciente[] = await res.json();
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json([]);
+    return NextResponse.error();
   }
 }
 

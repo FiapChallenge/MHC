@@ -71,7 +71,7 @@ export default function Header() {
                 alt="Logo Manchester HealthCare"
                 width={64}
                 height={64}
-                className="animate-spin pause group-hover:play"
+                className="nav-link animate-spin pause group-hover:play"
                 priority
               />
               <div>

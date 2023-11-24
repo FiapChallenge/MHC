@@ -4,13 +4,23 @@ import Logo from "@/assets/logo/LogoWithoutText.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import {
+  IoAlertCircleOutline,
+  IoCheckmarkCircleOutline,
+  IoEyeOffOutline,
+  IoEyeOutline,
+} from "react-icons/io5";
+import Notification from "@/components/Notification/Notification";
 
 export default function Cadastro() {
   const router = useRouter();
-  const navigate = (path: string) => {
-    router.push(path);
-  };
+
+  const [notification, setNotification] = useState<NotificationProps>({
+    nome: "",
+    descricao: "",
+    size: "w-6 h-6",
+    hidden: true,
+  });
 
   const [auditores, setAuditores] = useState<Auditor[]>([]);
   const [nome, setNome] = useState("");
@@ -32,7 +42,14 @@ export default function Cadastro() {
         const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
-        console.log(error);
+        setNotification({
+          Icon: IoAlertCircleOutline,
+          nome: "Erro",
+          descricao: "Erro ao carregar banco de dados!",
+          size: "8",
+          hidden: false,
+          color: { bg: "bg-red-100", text: "text-red-900" },
+        });
       }
     };
     getAuditores();
@@ -42,7 +59,14 @@ export default function Cadastro() {
     e.preventDefault();
     const auditor = auditores.find((auditor) => auditor.email === email);
     if (auditor) {
-      alert("Email já cadastrado!");
+      setNotification({
+        Icon: IoAlertCircleOutline,
+        nome: "Erro ao cadastrar",
+        descricao: "E-mail já cadastrado",
+        size: "6",
+        hidden: false,
+        color: { bg: "bg-red-100", text: "text-red-900" },
+      });
     } else {
       try {
         const res = await fetch("http://localhost:3000/api/auditor", {
@@ -56,10 +80,26 @@ export default function Cadastro() {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         const data: Auditor = await res.json();
-        alert("Cadastro realizado com sucesso!");
-        navigate("/login");
+        setNotification({
+          Icon: IoCheckmarkCircleOutline,
+          nome: "Sucesso",
+          descricao: "Cadastro realizado com sucesso!",
+          size: "6",
+          hidden: false,
+          color: { bg: "bg-green-100", text: "text-green-900" },
+        });
+        setTimeout(() => {
+          router.push("/login");
+        }, 2000);
       } catch (error) {
-        alert("Erro ao cadastrar!");
+        setNotification({
+          Icon: IoAlertCircleOutline,
+          nome: "Erro ao cadastrar",
+          descricao: "Erro ao cadastrar",
+          size: "6",
+          hidden: false,
+          color: { bg: "bg-red-100", text: "text-red-900" },
+        });
       }
     }
   };
@@ -67,6 +107,9 @@ export default function Cadastro() {
   return (
     <div className="py-28 flex flex-col items-center justify-center bg-background-50 px-4">
       <div className="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-2xl w-full max-w-md">
+        <div className="mb-8">
+          <Notification {...notification} />
+        </div>
         <div className="flex justify-center items-center pb-4">
           <Image
             src={Logo}

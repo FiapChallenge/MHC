@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
-export default function Card({
+const CardProfile = ({
   nome,
   descricao,
   funcao,
@@ -13,7 +13,7 @@ export default function Card({
   funcao: string;
   imagem: any;
   redesSociais: string[];
-}) {
+}) => {
   return (
     <div className="max-w-md mx-auto my-10 bg-white rounded-2xl shadow-xl md:shadow-lg p-5 hover:shadow-2xl transition-all duration-500 ease-in-out">
       <Image
@@ -30,12 +30,14 @@ export default function Card({
       <div className="flex justify-center gap-x-8 mt-5">
         <a
           href={redesSociais[0]}
+          target="_blank"
           className="text-primary transition-colors duration-300 hover:text-primary-600"
         >
           <IoLogoLinkedin className="w-8 h-8" />
         </a>
         <a
           href={redesSociais[1]}
+          target="_blank"
           className="text-primary transition-colors duration-300 hover:text-primary-600"
         >
           <IoLogoGithub className="w-8 h-8" />
@@ -51,4 +53,6 @@ export default function Card({
       </div>
     </div>
   );
-}
+};
+
+export default CardProfile;
