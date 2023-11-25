@@ -5,4 +5,5 @@ type NotificationProps = {
   size?: string;
   hidden?: boolean;
   color?: { bg: string; text: string };
+  timeout?: number | null;
 };

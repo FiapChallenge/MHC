@@ -23,6 +23,8 @@ export default function Login() {
     hidden: true,
   });
 
+  const [notificationKey, SetNotificationKey] = useState(0);
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -37,6 +39,7 @@ export default function Login() {
         const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
+        SetNotificationKey((prev) => prev + 1);
         setNotification({
           Icon: IoAlertCircleOutline,
           nome: "Erro",
@@ -77,6 +80,7 @@ export default function Login() {
 
         navigate.push("/software");
       } else {
+        SetNotificationKey((prev) => prev + 1);
         setNotification({
           Icon: IoAlertCircleOutline,
           nome: "Erro",
@@ -87,6 +91,7 @@ export default function Login() {
         });
       }
     } else {
+      SetNotificationKey((prev) => prev + 1);
       setNotification({
         Icon: IoAlertCircleOutline,
         nome: "Erro",
@@ -108,7 +113,7 @@ export default function Login() {
     <div className="py-28 flex flex-col items-center justify-center bg-background-50 px-4">
       <div className="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-2xl w-full max-w-md">
         <div className="mb-8">
-          <Notification {...notification} />
+          <Notification {...notification} key={notificationKey} />
         </div>
         <div className="flex justify-center items-center pb-4">
           <Image

@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0B75B53A-D21C-335C-A630-DFAF6AA12119" name="Classificacao">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>5771980A-E939-1F81-286B-987C0F20F6CE</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_classificacao" id="C7977281-1E1E-51B0-11FE-D684DBD573AD">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>29DA9F7A-61EA-1E58-9C58-A843263BBBB1</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_hora_classificacao" id="56F74169-8F2D-7783-B8EF-293FCED663ED">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>D49AF250-4ADD-BAE6-317A-E2312098C07C</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Gravidade_id_gravidade" id="0C7FEEE8-9CBC-D345-63D8-D2881C6E2B75">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>2725D209-3A9B-FB7B-C874-14CE6ECE90EC</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9D6969CC-BB56-451D-5878-FEAE249C2C4C" referredColumn="910C8F04-9209-EA46-2A66-D136772A06C9"/>
+</associations>
+</Column>
+<Column name="Sinal_id_sinal" id="FA949975-4BF8-BA59-170E-7483D9358776">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>CAD560BC-C8FE-E6F4-87B0-FC831207424D</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="32BE7B33-34C7-05D3-0E19-3BB5B4129702" referredColumn="72489178-5C3C-C5CF-8E5B-F4EC98227ADE"/>
+</associations>
+</Column>
+<Column name="Auditor_id_auditor" id="F203ACCA-7199-C333-5BCC-607544340A24">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>4E1CADB4-B974-C30A-58AE-01893AE06E3C</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4B1CBE09-062A-23F6-9318-DF8583D59F55" referredColumn="FD41F8C7-8108-AAD1-9504-73CB9903CFB2"/>
+</associations>
+</Column>
+<Column name="Paciente_id_paciente" id="52047221-EA83-ED5A-2788-388D073440BE">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2023-11-18 00:26:07 UTC</createdTime>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF628C71-0321-196E-17D7-8A71A566FDB6" referredColumn="5B1A4884-F953-ACA8-D5B7-241F2EC4EDEA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0E603AC4-2683-C66E-E2C5-FCD634DE3E26" name="Classificacao_risco_PK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>045F7DC0-0288-CE8D-11F3-42A7ABA930C7</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7977281-1E1E-51B0-11FE-D684DBD573AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="550E669A-0A80-D107-1242-5C7AE0C5CE83" name="Classificacao_Gravidade_FK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>DAE79C8B-AEB9-EED6-59B6-F5755AA40D13</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C7FEEE8-9CBC-D345-63D8-D2881C6E2B75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B384171E-4682-0600-5141-DEAD219CF924" name="Classificacao_Sinal_FK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>73B80271-7E68-77F0-EA3C-B679EDE0FF2F</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA949975-4BF8-BA59-170E-7483D9358776"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E8F920A3-3522-9A69-CBD0-BC839C43F488" name="Classificacao_Paciente_FK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>857B328F-8ABA-A565-316E-337E0747A03B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="52047221-EA83-ED5A-2788-388D073440BE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A24E32EB-13DB-BFE5-526E-77E581736C57" name="Classificacao_Auditor_FK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>6E4DE19E-C7D3-89AC-4DBC-23753F7130B3</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F203ACCA-7199-C333-5BCC-607544340A24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

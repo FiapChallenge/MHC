@@ -22,6 +22,8 @@ export default function Cadastro() {
     hidden: true,
   });
 
+  const [notificationKey, SetNotificationKey] = useState(0);
+
   const [auditores, setAuditores] = useState<Auditor[]>([]);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -42,6 +44,7 @@ export default function Cadastro() {
         const data: Auditor[] = await res.json();
         setAuditores(data);
       } catch (error) {
+        SetNotificationKey((prev) => prev + 1);
         setNotification({
           Icon: IoAlertCircleOutline,
           nome: "Erro",
@@ -59,6 +62,7 @@ export default function Cadastro() {
     e.preventDefault();
     const auditor = auditores.find((auditor) => auditor.email === email);
     if (auditor) {
+      SetNotificationKey((prev) => prev + 1);
       setNotification({
         Icon: IoAlertCircleOutline,
         nome: "Erro ao cadastrar",
@@ -80,6 +84,7 @@ export default function Cadastro() {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         const data: Auditor = await res.json();
+        SetNotificationKey((prev) => prev + 1);
         setNotification({
           Icon: IoCheckmarkCircleOutline,
           nome: "Sucesso",
@@ -92,6 +97,7 @@ export default function Cadastro() {
           router.push("/login");
         }, 2000);
       } catch (error) {
+        SetNotificationKey((prev) => prev + 1);
         setNotification({
           Icon: IoAlertCircleOutline,
           nome: "Erro ao cadastrar",
@@ -108,7 +114,7 @@ export default function Cadastro() {
     <div className="py-28 flex flex-col items-center justify-center bg-background-50 px-4">
       <div className="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-2xl w-full max-w-md">
         <div className="mb-8">
-          <Notification {...notification} />
+          <Notification {...notification} key={notificationKey} />
         </div>
         <div className="flex justify-center items-center pb-4">
           <Image

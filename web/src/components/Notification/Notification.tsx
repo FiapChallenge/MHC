@@ -8,6 +8,7 @@ export default function Notification({
   size = "w-16 h-16",
   hidden = false,
   color = { bg: "bg-secondary-100", text: "text-secondary-800" },
+  timeout = null,
 }: NotificationProps) {
   const [close, setClose] = useState(false);
   const noti = useRef<HTMLDivElement | null>(null);
@@ -20,12 +21,20 @@ export default function Notification({
     }
   }, [close]);
 
+  useEffect(() => {
+    if (timeout) {
+      setTimeout(() => {
+        setClose(true);
+      }, timeout);
+    }
+  }, [timeout]);
+
   return (
     <div
       ref={noti}
       className={`${
         color.bg
-      } flex flex-col relative md:flex-row items-center border max-w-[910px] border-gray-400 ${
+      } flex flex-col relative md:flex-row items-center border border-gray-400 ${
         color.text
       } px-5 py-3 rounded relative ${hidden ? "hidden" : ""}`}
       role="alert"

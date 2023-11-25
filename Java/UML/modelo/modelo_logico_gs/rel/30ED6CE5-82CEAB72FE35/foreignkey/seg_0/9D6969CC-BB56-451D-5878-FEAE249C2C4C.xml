@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9D6969CC-BB56-451D-5878-FEAE249C2C4C" containerWithKeyObject="0B75B53A-D21C-335C-A630-DFAF6AA12119" localFKIndex="550E669A-0A80-D107-1242-5C7AE0C5CE83" name="Classificacao_Gravidade_FK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:57:41 UTC</createdTime>
+<generatorID>DAE79C8B-AEB9-EED6-59B6-F5755AA40D13</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<referredTableLongName>Gravidade</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E4D24740-6973-B6CD-10E5-6BEA272324F0</referredTableID>
+<keyObject>807DC289-47D6-284C-4BC4-F6D7E37532F4</keyObject>
+<referredKeyID>807DC289-47D6-284C-4BC4-F6D7E37532F4</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_gravidade</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -51,7 +51,7 @@ Meu principal hobby é desenvolver programas que me auxiliem em atividades cotid
             descricao="Sou uma pessoa que ama aprender, atualmente estou cursando análise e desenvolvimento de sistemas na FIAP, aprendo rápido e gosto de trabalhar no ramo"
             imagem={GabsProfile}
             redesSociais={[
-              "https://www.linkedin.com/in/gabriela-zanotto-alves-9a5b1b1b6/",
+              "https://www.linkedin.com/in/gabriela-zanotto-385a61211/",
               "https://github.com/GabsBecca",
             ]}
             funcao="Diretora de Marketing"

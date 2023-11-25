@@ -155,13 +155,13 @@ export default function Header() {
           {!isLogged ? (
             <>
               <Link
-                className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-secondary hover:bg-secondary-200 text-base text-gray-900 font-bold rounded-xl transition duration-200"
+                className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-secondary hover:bg-secondary-200 text-base text-gray-900 font-bold rounded-lg transition duration-200"
                 href="/login"
               >
                 Entrar
               </Link>
               <Link
-                className="hidden lg:inline-block py-2 px-6 bg-primary hover:bg-primary-600 text-base text-white font-bold rounded-xl transition duration-200"
+                className="hidden lg:inline-block py-2 px-6 bg-primary hover:bg-primary-600 text-base text-white font-bold rounded-lg transition duration-200"
                 href="/cadastro"
               >
                 Cadastrar
@@ -177,7 +177,7 @@ export default function Header() {
             // log out
             <>
               <button
-                className="lg:inline-flex order-1 items-center justify-center gap-x-1 lg:ml-auto lg:mr-3 py-2 px-4 lg:px-6 bg-secondary hover:bg-secondary-200 text-base text-gray-900 font-bold rounded-xl transition duration-200"
+                className="lg:inline-flex order-1 items-center justify-center gap-x-1 lg:ml-auto lg:mr-3 py-2 px-4 lg:px-6 bg-secondary hover:bg-secondary-200 text-base text-gray-900 font-bold rounded-lg transition duration-200"
                 onClick={logout}
               >
                 <svg

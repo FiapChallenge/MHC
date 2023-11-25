@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B1049B60-5D17-010D-1688-A379D2A7788D" name="Auditor">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>3F889EE7-D794-5EE1-9120-E4FA786F567C</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_auditor" id="FD41F8C7-8108-AAD1-9504-73CB9903CFB2">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>28DCFF26-38F7-0F86-A609-B4C731F7BA7B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome" id="1A9290BB-C18F-8BBA-BCAC-504DD3D6A72F">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>43CEC1D8-1EED-FB99-0815-A3A88841F450</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="D9533939-BC1A-F3FA-EF12-C61EAF3F53F8">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:10:14 UTC</createdTime>
+<generatorID>F28F6DB1-E3A8-0CE9-1D45-D219CC18212B</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="senha" id="BB2C2925-5376-4820-4543-3FE24A70D082">
+<createdBy>augus</createdBy>
+<createdTime>2023-11-22 11:10:14 UTC</createdTime>
+<generatorID>093F8937-D6EC-5CBC-B05D-0252A025ACDB</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cpf" id="CE21D1DC-A5B7-F541-33DF-A3ECDC691C59">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>6B00D0E0-726A-7AFE-E767-FED0AB6CCF78</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="crm" id="7293D78E-C536-98DD-D886-4C689D128127">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>016D138C-6513-2E3B-76A7-5AA1AC60BDB6</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="coren" id="C0D08ECD-4B77-D000-C879-6BD51F47AFC4">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>53415191-3154-E2CE-ED14-0735003B5198</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="especialidade" id="32965C69-870A-673E-1DF3-827BCA5B0A71">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>BC10CDB3-80BF-5E37-B50C-FEEBDBD55349</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BE6A1202-1C3A-3D0E-06B8-23A4574354C5" name="Auditor_PK">
+<createdBy>Gabriel</createdBy>
+<createdTime>2023-11-17 01:51:54 UTC</createdTime>
+<generatorID>E9D18414-9E6C-9A2C-EDDA-7137CFDE285A</generatorID>
+<ownerDesignName>modelo_logico_gs</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FD41F8C7-8108-AAD1-9504-73CB9903CFB2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

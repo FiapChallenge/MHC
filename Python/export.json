@@ -1,0 +1,262 @@
+[
+    {
+        "id_sinal": 1,
+        "nome": "Agressão",
+        "descricao": "Agressão refere-se a comportamentos físicos, verbais ou psicológicos que causam dano ou sofrimento a outra pessoa. Pode incluir ataques físicos, ameaças, intimidação ou hostilidade."
+    },
+    {
+        "id_sinal": 2,
+        "nome": "Alergia",
+        "descricao": "A alergia é uma resposta imunológica exagerada a substâncias normalmente inofensivas, como pólen, alimentos, picadas de insetos ou medicamentos. Os sintomas podem variar de leves, como coceira e espirros, a graves, incluindo dificuldade respiratória e choque anafilático."
+    },
+    {
+        "id_sinal": 3,
+        "nome": "Alteração do Comportamento",
+        "descricao": "Alterações no comportamento referem-se a mudanças significativas na maneira como uma pessoa age ou se relaciona com os outros. Pode incluir agitação, isolamento, agressividade, falta de interesse em atividades comuns, entre outros."
+    },
+    {
+        "id_sinal": 4,
+        "nome": "Asma, História de",
+        "descricao": "Uma história de asma indica um histórico médico em que o paciente experimentou problemas respiratórios recorrentes, como sibilância, falta de ar e tosse, associados à obstrução das vias aéreas."
+    },
+    {
+        "id_sinal": 5,
+        "nome": "Autoagressão",
+        "descricao": "Autoagressão envolve comportamentos em que uma pessoa causa dano a si mesma deliberadamente. Isso pode incluir cortes, queimaduras, ingestão de substâncias tóxicas, entre outros."
+    },
+    {
+        "id_sinal": 6,
+        "nome": "Bebê Chorando",
+        "descricao": "O choro em bebês é uma forma crucial de comunicação. Pode indicar fome, desconforto, sono, fralda suja ou simplesmente a necessidade de atenção. Entender os diferentes tipos de choro pode ajudar os pais a atender às necessidades do bebê."
+    },
+    {
+        "id_sinal": 7,
+        "nome": "Cefaleia",
+        "descricao": "Cefaleia refere-se a dores de cabeça. Pode variar de leves a intensas e ser causada por uma variedade de fatores, incluindo tensão, enxaqueca, sinusite ou condições médicas subjacentes."
+    },
+    {
+        "id_sinal": 8,
+        "nome": "Convulsões",
+        "descricao": "Convulsões são episódios súbitos e descontrolados de atividade elétrica anormal no cérebro, que podem levar a movimentos involuntários, perda de consciência e outros sintomas. Podem ser causadas por várias condições, incluindo epilepsia, febre alta ou lesões cerebrais."
+    },
+    {
+        "id_sinal": 9,
+        "nome": "Corpo Estranho",
+        "descricao": "A presença de um corpo estranho refere- se à entrada acidental de objetos ou substâncias no corpo, muitas vezes causando desconforto, dor ou risco de lesões."
+    },
+    {
+        "id_sinal": 10,
+        "nome": "Criança Irritadiça",
+        "descricao": "Uma criança irritadiça demonstra irritação excessiva, mau humor ou desconforto. Pode ser causada por uma variedade de razões, incluindo desconforto físico, fome, cansaço ou necessidade de atenção."
+    },
+    {
+        "id_sinal": 11,
+        "nome": "Criança Mancando",
+        "descricao": "Uma criança que está mancando pode estar experimentando dor ou desconforto ao caminhar. Isso pode ser causado por lesões, infecções ou condições médicas subjacentes."
+    },
+    {
+        "id_sinal": 12,
+        "nome": "Desmaio no Adulto",
+        "descricao": "O desmaio em adultos refere-se à perda temporária de consciência e pode ser causado por fatores como baixa pressão sanguínea, desidratação, estresse ou condições médicas subjacentes."
+    },
+    {
+        "id_sinal": 13,
+        "nome": "Diabetes, História de",
+        "descricao": "Uma história de diabetes indica que o paciente tem um histórico de desequilíbrios nos níveis de açúcar no sangue, o que pode levar a uma variedade de sintomas, incluindo sede excessiva, micção frequente e fadiga."
+    },
+    {
+        "id_sinal": 14,
+        "nome": "Diarreia e/ou Vômitos",
+        "descricao": "Diarreia e vômitos são sintomas gastrointestinais que podem ser causados por infecções, intoxicação alimentar, condições médicas ou outros fatores."
+    },
+    {
+        "id_sinal": 15,
+        "nome": "Dispnéia em Adulto",
+        "descricao": "A dispneia em adultos refere-se à dificuldade respiratória. Pode ser causada por condições como asma, doença pulmonar obstrutiva crônica (DPOC), insuficiência cardíaca ou outras doenças respiratórias."
+    },
+    {
+        "id_sinal": 16,
+        "nome": "Dispnéia em Criança",
+        "descricao": "A dispneia em crianças é caracterizada por dificuldade respiratória. Pode ser causada por infecções respiratórias, alergias, asma ou outros problemas de saúde."
+    },
+    {
+        "id_sinal": 17,
+        "nome": "Doença Mental",
+        "descricao": "A doença mental abrange uma variedade de condições que afetam o funcionamento mental e emocional de uma pessoa. Inclui transtornos de ansiedade, depressão, esquizofrenia, entre outros."
+    },
+    {
+        "id_sinal": 18,
+        "nome": "Doença Sexualmente Transmissível",
+        "descricao": "Doenças sexualmente transmissíveis (DSTs) são infecções transmitidas por meio de atividades sexuais. Exemplos incluem clamídia, gonorréia, sífilis e HIV."
+    },
+    {
+        "id_sinal": 19,
+        "nome": "Dor Abdominal em Adulto",
+        "descricao": "A dor abdominal em adultos pode ser causada por uma variedade de condições, incluindo problemas gastrointestinais, apendicite, pedras nos rins ou outras condições médicas."
+    },
+    {
+        "id_sinal": 20,
+        "nome": "Dor Abdominal em Criança",
+        "descricao": "A dor abdominal em crianças pode ser resultado de infecções, problemas gastrointestinais, apendicite ou outras condições. A avaliação médica é importante para determinar a causa."
+    },
+    {
+        "id_sinal": 21,
+        "nome": "Dor Cervical",
+        "descricao": "A dor cervical refere-se à dor na região do pescoço. Pode ser causada por lesões, tensão muscular, problemas de coluna ou outras condições."
+    },
+    {
+        "id_sinal": 22,
+        "nome": "Dor de Garganta",
+        "descricao": "A dor de garganta pode ser causada por infecções virais ou bacterianas, como resfriados, gripes ou amigdalite. Pode apresentar-se com dificuldade para engolir, vermelhidão e inflamação."
+    },
+    {
+        "id_sinal": 23,
+        "nome": "Dor Lombar",
+        "descricao": "A dor lombar é caracterizada por desconforto ou dor na região inferior das costas. Pode ser causada por lesões, má postura, problemas de coluna ou condições médicas subjacentes."
+    },
+    {
+        "id_sinal": 24,
+        "nome": "Dor Testicular",
+        "descricao": "A dor testicular pode ser causada por lesões, inflamações, infecções ou torções nos testículos. Avaliação médica é essencial para determinar a causa."
+    },
+    {
+        "id_sinal": 25,
+        "nome": "Dor Torácica",
+        "descricao": "A dor torácica pode ser um sintoma de várias condições, incluindo problemas cardíacos, pulmonares ou gastrointestinais. Deve ser avaliada prontamente, especialmente se acompanhada de falta de ar ou dor irradiando para os braços."
+    },
+    {
+        "id_sinal": 26,
+        "nome": "Embriaguez Aparente",
+        "descricao": "Indica sinais visíveis de intoxicação alcoólica, como fala arrastada, falta de coordenação motora, mudanças no comportamento e, em casos graves, perda de consciência."
+    },
+    {
+        "id_sinal": 27,
+        "nome": "Erupção Cutânea",
+        "descricao": "Refere-se a uma reação na pele que pode apresentar vermelhidão, coceira, inchaço ou descamação. Pode ser causada por alergias, infecções ou condições dermatológicas."
+    },
+    {
+        "id_sinal": 28,
+        "nome": "Exposição a Agentes Químicos",
+        "descricao": "Indica contato com substâncias químicas que podem causar irritação, queimaduras ou intoxicação. A avaliação médica é importante para determinar a gravidade e iniciar o tratamento apropriado."
+    },
+    {
+        "id_sinal": 29,
+        "nome": "Feridas",
+        "descricao": "Lesões na pele que podem variar em gravidade, desde cortes simples até feridas mais complexas. O tratamento adequado depende da natureza e extensão da ferida."
+    },
+    {
+        "id_sinal": 30,
+        "nome": "Gravidez",
+        "descricao": "Refere-se ao estado de uma mulher que está esperando um filho. Os sintomas podem incluir atraso menstrual, náuseas, sensibilidade nos seios e mudanças hormonais."
+    },
+    {
+        "id_sinal": 31,
+        "nome": "Hemorragia Digestiva",
+        "descricao": "Sangramento no trato digestivo, que pode se manifestar como sangue nas fezes ou vômito com sangue. Pode ser causado por úlceras, varizes esofágicas ou outras condições gastrointestinais."
+    },
+    {
+        "id_sinal": 32,
+        "nome": "Infecções Locais e Abcessos",
+        "descricao": "Indica a presença de infecções localizadas, muitas vezes acompanhadas por inchaço, vermelhidão e dor. Abcessos são acúmulos de pus resultantes de infecções."
+    },
+    {
+        "id_sinal": 33,
+        "nome": "Mal Estar em Adulto",
+        "descricao": "Um estado geral de desconforto, podendo ser causado por diversas razões, como infecções, estresse, desidratação ou condições médicas subjacentes."
+    },
+    {
+        "id_sinal": 34,
+        "nome": "Mal Estar em Criança",
+        "descricao": "Similar ao mal-estar em adultos, mas considerando as particularidades pediátricas. Pode ser causado por infecções, desconforto físico ou outras condições."
+    },
+    {
+        "id_sinal": 35,
+        "nome": "Mordeduras e Picadas",
+        "descricao": "Lesões resultantes de mordidas de animais, insetos ou outros organismos. Podem causar dor, inchaço, vermelhidão e, em alguns casos, transmitir doenças."
+    },
+    {
+        "id_sinal": 36,
+        "nome": "Overdose e Envenenamento",
+        "descricao": "Situações em que uma pessoa é exposta a uma quantidade excessiva de substâncias, seja de medicamentos, drogas ou produtos tóxicos. Isso pode levar a sintomas graves e requer atendimento de emergência."
+    },
+    {
+        "id_sinal": 37,
+        "nome": "Pais Preocupados",
+        "descricao": "Refere-se a situações em que os pais estão ansiosos ou preocupados com a saúde ou comportamento de seus filhos. Essa preocupação pode ser motivada por sintomas físicos, emocionais ou comportamentais."
+    },
+    {
+        "id_sinal": 38,
+        "nome": "Palpitações",
+        "descricao": "Sensação perceptível de batimentos cardíacos irregulares ou acelerados. Pode ser causada por ansiedade, problemas cardíacos ou outras condições médicas."
+    },
+    {
+        "id_sinal": 39,
+        "nome": "Problemas Dentários",
+        "descricao": "Inclui condições relacionadas aos dentes e gengivas, como cáries, inflamação gengival, abscessos ou trauma dental."
+    },
+    {
+        "id_sinal": 40,
+        "nome": "Problemas em Extremidades",
+        "descricao": "Refere-se a condições que afetam braços, pernas, mãos ou pés. Pode incluir lesões, dor, inchaço ou alterações na sensação."
+    },
+    {
+        "id_sinal": 41,
+        "nome": "Problemas em Face",
+        "descricao": "Condições que afetam a região facial, como dor, inchaço, erupções cutâneas ou lesões."
+    },
+    {
+        "id_sinal": 42,
+        "nome": "Problemas em Olhos",
+        "descricao": "Inclui condições oculares, como irritação, vermelhidão, coceira, visão embaçada ou outros sintomas relacionados aos olhos."
+    },
+    {
+        "id_sinal": 43,
+        "nome": "Problemas em Ouvidos",
+        "descricao": "Condições que afetam os ouvidos, como dor, infecções, perda de audição ou zumbido."
+    },
+    {
+        "id_sinal": 44,
+        "nome": "Problemas Urinários",
+        "descricao": "Engloba sintomas relacionados ao sistema urinário, como dificuldade para urinar, dor ao urinar, aumento da frequência urinária ou presença de sangue na urina."
+    },
+    {
+        "id_sinal": 45,
+        "nome": "Quedas",
+        "descricao": "Lesões resultantes de cair, podendo variar de contusões leves a fraturas mais graves. Principalmente em idosos, as quedas podem ter sérias consequências."
+    },
+    {
+        "id_sinal": 46,
+        "nome": "Queimaduras",
+        "descricao": "Lesões na pele causadas por calor, substâncias químicas ou eletricidade. A gravidade varia de queimaduras leves a graves, exigindo cuidados específicos."
+    },
+    {
+        "id_sinal": 47,
+        "nome": "Sangramento Vaginal",
+        "descricao": "Sangramento proveniente da vagina, que pode ser causado por menstruação, gravidez, lesões, infecções ou condições médicas."
+    },
+    {
+        "id_sinal": 48,
+        "nome": "Trauma Cranioencefálico",
+        "descricao": "Lesões na cabeça que afetam o cérebro, podendo resultar em concussões, hematomas ou danos mais graves."
+    },
+    {
+        "id_sinal": 49,
+        "nome": "Trauma Maior",
+        "descricao": "Lesões graves que afetam múltiplos sistemas do corpo, muitas vezes resultantes de acidentes de trânsito, quedas de altura ou outros eventos traumáticos."
+    },
+    {
+        "id_sinal": 50,
+        "nome": "Trauma Toracoabdominal",
+        "descricao": "Lesões que afetam a região do tórax e abdômen, podendo incluir fraturas de costelas, lesões pulmonares ou danos aos órgãos abdominais. Requer avaliação e tratamento urgentes."
+    },
+    {
+        "id_sinal": 51,
+        "nome": "Situação de Múltiplas Vitimas — Avaliação Primária",
+        "descricao": "Triagem frente a um acidente com múltiplas vítimas tem um objetivo completamente diferente da classificação de risco usual do dia a dia dos serviços de urgência. Para conseguir este objetivo (que é inicialmente salvar o maior número de pessoas possível e de pois encaminhá-las ao melhor cuidado dentro dos recursos disponíveis), tem sido adotada uma abordagem diferente. Ao invés de se lecionar antes os mais graves, nesta situação são separados os menos graves. Os discriminadores gerais e específicos são substituídos por outros mais simples que fazem uma divisão grosseira dos pacientes em três categorias."
+    },
+    {
+        "id_sinal": 52,
+        "nome": "Situação de Múltiplas Vítimas — Avaliação Secundária",
+        "descricao": "A avaliação secundária é usada para reavaliar os pacientes. O Escore Revisado de Triagem do Trauma — ERTT (Triage Revised Trauma Score —TRTS) é uma abordagem fisiológica mais refinada para classificar grande número de casos. É baseado na pontuação de três parâmetros fisiológicos: estado de consciência, freqüência respiratória e pressão arterial sistólica. Pelo TRTS, as prioridades são alocadas como se segue: 1-10 = Prioridade I, 11 = Prioridade 2, 12 = Prioridade 3, (O = Prioridade 4)"
+    }
+]

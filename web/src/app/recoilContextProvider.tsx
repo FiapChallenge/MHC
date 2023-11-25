@@ -6,6 +6,11 @@ export const loggedState = atom({
   default: false,
 });
 
+export const selectedFluxoState = atom({
+  key: "SelectedFluxo",
+  default: 5,
+});
+
 export default function RecoilContextProvider({
   children,
 }: {

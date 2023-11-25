@@ -34,10 +34,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br" className={`${poppins.variable} ${montserrat.variable}`}>
-      <body className={"scroll-top vsc-initialized font-body"}>
+      <body
+        className={"scroll-top vsc-initialized font-body overflow-x-hidden"}
+      >
         <RecoilContextProvider>
           <Header />
-          <main className="overflow-x-hidden">{children}</main>
+          <main>{children}</main>
           <Footer />
         </RecoilContextProvider>
       </body>
