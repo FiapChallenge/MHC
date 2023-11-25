@@ -74,7 +74,7 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 
 - [x] Código fonte (arquivos .py) do sistema desenvolvido conforme os requisitos listados previamente (60 pontos).
 
-- [ ] Vídeo explicando a solução e demonstrando o software funcionando, com duração máxima de 5 minutos. O vídeo deve ser disponibilizado no Youtube (ou equivalente) (20 pontos)
+- [x] Vídeo explicando a solução e demonstrando o software funcionando, com duração máxima de 5 minutos. O vídeo deve ser disponibilizado no Youtube (ou equivalente) (20 pontos)
 - [x] Documento com a especificação da solução proposta:
   - [x] O arquivo deve ter uma capa com o nome da solução, nome e RM dos integrantes, turma de cada integrante e um link para o vídeo disponibilizado (não esqueça de deixar o vídeo acessível) (10 pontos).
 
@@ -102,9 +102,9 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 - [x] Diagrama de Caso de Uso completa da solução (15 pontos);
 
 - [x] Diagrama de Atividades completa da solução (15 pontos);
-- [ ] Diagrama de Sequência completa da solução (15 pontos);
-- [ ] Descrição detalhada do caso de uso, com cenários principal, alternativos e de exceção (15 pontos);
-- [ ] Vídeo pitch de no máximo 3 minutos
+- [x] Diagrama de Sequência completa da solução (15 pontos);
+- [x] Descrição detalhada do caso de uso, com cenários principal, alternativos e de exceção (15 pontos);
+- [x] Vídeo pitch de no máximo 3 minutos
 - [x] Plano de negócio com:
   - [x] Sumário de proposta de negócio (15 pontos);
   - [x] Considerando que a sua Startup terá gastos de investimento de R$100.000,00 reais e ganho previsto de R$220.000,00, qual é o ROI? (10 pontos);
@@ -116,12 +116,12 @@ A classificação de prioridade se baseia em 52 fluxogramas presentes no protoco
 - [x] Padronização dos endpoints(API)
 
   - [x] As telas criadas deverão apresentar um padrão de apresentação (CSS) (20 pontos);
-  - [ ] A navegação a acessibilidade e a usabilidade serão levadas em consideração para a correção da GS (15 pontos);
+  - [x] A navegação a acessibilidade e a usabilidade serão levadas em consideração para a correção da GS (15 pontos);
 
 - [x] Componentização dos elementos (TOTAL 15 pontos)
 - [x] Formulário de cadastro/atualização:
   - [x] Os dados persistidos devem permanecer na base de dados, mesmo depois da aplicação encerrada, ou seja, se fecharmos a aplicação e/ou o navegador, quando retornarmos os dados deverão ser exibidos novamente, com as alterações que foram realizadas e etc (10 pontos);
-  - [ ] Os dados devem ser persistidos em base de dados, além disso, a fim de evitar o tráfego desnecessário de dados pela rede, utilize estratégias que minimize esse processo, tais como: LOCALSTORAGE e/ou as APIs locais do NEXT.js que gerenciam as entradas de dados na aplicação e criam seu próprios caches. No caso de login/validação utilize SESSIONSTORAGE (10 pontos);
+  - [x] Os dados devem ser persistidos em base de dados, além disso, a fim de evitar o tráfego desnecessário de dados pela rede, utilize estratégias que minimize esse processo, tais como: LOCALSTORAGE e/ou as APIs locais do NEXT.js que gerenciam as entradas de dados na aplicação e criam seu próprios caches. No caso de login/validação utilize SESSIONSTORAGE (10 pontos);
   - [x] Gerar páginas de erro e ou aviso de acordo com o Status Code HTTP, por conta dos retornos gerados na utilização dos verbos HTTP: get, put, delete, post (15 pontos);
   - [x] Os dados exibidos na tela e os dados que forem gravados na base dados devem ser feitos no formato JSON (15 pontos).
 
