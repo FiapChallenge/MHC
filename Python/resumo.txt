@@ -7,6 +7,8 @@ Gabriela Zanotto Alves Rodrigues - 551629
 
 Nome da solução: MHC (Manchester Health Care)
 
+📼| Vídeo: https://youtu.be/4mhnu89Gcz0?si=MqP0i0Cg32YxIChm
+
 📅| Data de entrega do projeto: 24/11/2023
 
 📚| Disciplina: Computational Thinking Using Python
